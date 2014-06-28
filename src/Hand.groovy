@@ -2,8 +2,8 @@ class Hand {
 
   List<Card> cards = []
 
-  public Card getHighCard() {
-    sort().first()
+  public Hand(List<String> str) {
+    str.each { s -> cards << new Card(s[0], s[1]) }
   }
 
   public List<Card> sort() {
@@ -11,92 +11,38 @@ class Hand {
   }
 
   public static Hand mockHighCard() {
-    def hand = new Hand()
-    hand.cards << new Card("9", "H")
-    hand.cards << new Card("J", "C")
-    hand.cards << new Card("K", "C")
-    hand.cards << new Card("2", "S")
-    hand.cards << new Card("10", "D")
-    hand
+    new Hand(['9H', 'JC', 'KC', '2S', 'TD'])
   }
 
   public static Hand mockPair() {
-    def hand = new Hand()
-    hand.cards << new Card("9", "H")
-    hand.cards << new Card("J", "C")
-    hand.cards << new Card("K", "C")
-    hand.cards << new Card("2", "S")
-    hand.cards << new Card("9", "D")
-    hand
+    new Hand(['9H', 'JC', 'KC', '2S', '9D'])
   }
 
   public static Hand mockTwoPair() {
-    def hand = new Hand()
-    hand.cards << new Card("A", "H")
-    hand.cards << new Card("A", "D")
-    hand.cards << new Card("K", "C")
-    hand.cards << new Card("2", "S")
-    hand.cards << new Card("2", "D")
-    hand
+    new Hand(['AH', 'AD', 'KC', '2S', '2D'])
   }
 
   public static Hand mockThreeOfAKind() {
-    def hand = new Hand()
-    hand.cards << new Card("A", "H")
-    hand.cards << new Card("A", "D")
-    hand.cards << new Card("K", "C")
-    hand.cards << new Card("A", "S")
-    hand.cards << new Card("9", "D")
-    hand
+    new Hand(['AH', 'AD', 'KC', 'AS', '9D'])
   }
 
   public static Hand mockStraight() {
-    def hand = new Hand()
-    hand.cards << new Card("4", "H")
-    hand.cards << new Card("5", "D")
-    hand.cards << new Card("6", "C")
-    hand.cards << new Card("7", "S")
-    hand.cards << new Card("8", "D")
-    hand
+    new Hand(['4H', '5D', '6C', '7S', '8D'])
   }
 
   public static Hand mockFlush() {
-    def hand = new Hand()
-    hand.cards << new Card("2", "H")
-    hand.cards << new Card("4", "H")
-    hand.cards << new Card("6", "H")
-    hand.cards << new Card("8", "H")
-    hand.cards << new Card("10", "H")
-    hand
+    new Hand(['2H', '4H', '6H', '8H', 'TH'])
   }
 
   public static Hand mockFullHouse() {
-    def hand = new Hand()
-    hand.cards << new Card("2", "H")
-    hand.cards << new Card("2", "D")
-    hand.cards << new Card("2", "S")
-    hand.cards << new Card("7", "D")
-    hand.cards << new Card("7", "H")
-    hand
+    new Hand(['2H', '2D', '2S', '7D', '7H'])
   }
 
   public static Hand mockFourOfAKind() {
-    def hand = new Hand()
-    hand.cards << new Card("2", "H")
-    hand.cards << new Card("2", "D")
-    hand.cards << new Card("2", "S")
-    hand.cards << new Card("2", "C")
-    hand.cards << new Card("7", "H")
-    hand
+    new Hand(['2H', '2D', '2S', '2C', '7H'])
   }
 
   public static Hand mockStraightFlush() {
-    def hand = new Hand()
-    hand.cards << new Card("4", "H")
-    hand.cards << new Card("5", "H")
-    hand.cards << new Card("6", "H")
-    hand.cards << new Card("7", "H")
-    hand.cards << new Card("8", "H")
-    hand
+    new Hand(['4H', '5H', '6H', '7H', '8H'])
   }
 }

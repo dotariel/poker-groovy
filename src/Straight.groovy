@@ -14,4 +14,8 @@ class Straight implements Rank {
 
     return true
   }
+
+  String toString() {
+    "Straight"
+  }
 }

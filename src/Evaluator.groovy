@@ -12,7 +12,15 @@ class Evaluator {
     new HighCard()
   ]
  
-  public def evaluate(Hand hand) {
+  public Hand choose(Hand a, Hand b) {
+    if ( ranks.indexOf(getRank(a)) < ranks.indexOf(getRank(b)) )
+      return a
+
+    if ( ranks.indexOf(getRank(a)) < ranks.indexOf(getRank(b)) )
+      return b
+  }
+
+  private Rank getRank(Hand hand) {
     ranks.find { rank -> rank.evaluate(hand) }
   } 
 }
