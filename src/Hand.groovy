@@ -79,4 +79,15 @@ class Hand {
     hand.cards << new Card("7", "H")
     hand
   }
+
+  public static Hand mockFourOfAKind() {
+    def hand = new Hand()
+    hand.cards << new Card("2", "H")
+    hand.cards << new Card("2", "D")
+    hand.cards << new Card("2", "S")
+    hand.cards << new Card("2", "C")
+    hand.cards << new Card("7", "H")
+    hand
+  }
+
 }
