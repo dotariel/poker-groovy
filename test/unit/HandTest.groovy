@@ -6,7 +6,7 @@ class HandTest {
   public void should_make_hand_from_string() {
     def hand = new Hand(['TC', '9H', '3S', '4D', 'AH'])
 
-    println hand.cards
+    assert hand.cards.collect { c -> c.toString() } == ['TC', '9H', '3S', '4D', 'AH']
   }
 
   @Test
