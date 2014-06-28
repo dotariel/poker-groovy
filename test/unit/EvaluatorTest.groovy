@@ -8,5 +8,6 @@ class EvaluatorTest {
 
     assert evaluator.evaluate(Hand.mockHighCard()) instanceof HighCard
     assert evaluator.evaluate(Hand.mockPair()) instanceof Pair
+    assert evaluator.evaluate(Hand.mockTwoPair()) instanceof TwoPair
   }
 }
