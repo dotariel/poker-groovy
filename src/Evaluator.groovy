@@ -1,6 +1,7 @@
 class Evaluator {
 
   static List<Rank> ranks = [
+    new Flush(),
     new Straight(),
     new ThreeOfAKind(),
     new TwoPair(),

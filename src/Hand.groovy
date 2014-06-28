@@ -59,4 +59,14 @@ class Hand {
     hand.cards << new Card("8", "D")
     hand
   }
+
+  public static Hand mockFlush() {
+    def hand = new Hand()
+    hand.cards << new Card("2", "H")
+    hand.cards << new Card("4", "H")
+    hand.cards << new Card("6", "H")
+    hand.cards << new Card("8", "H")
+    hand.cards << new Card("10", "H")
+    hand
+  }
 }
