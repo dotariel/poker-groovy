@@ -14,5 +14,6 @@ class EvaluatorTest {
     assert evaluator.evaluate(Hand.mockFlush()) instanceof Flush
     assert evaluator.evaluate(Hand.mockFullHouse()) instanceof FullHouse
     assert evaluator.evaluate(Hand.mockFourOfAKind()) instanceof FourOfAKind
+    assert evaluator.evaluate(Hand.mockStraightFlush()) instanceof StraightFlush
   }
 }

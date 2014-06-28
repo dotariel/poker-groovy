@@ -90,4 +90,13 @@ class Hand {
     hand
   }
 
+  public static Hand mockStraightFlush() {
+    def hand = new Hand()
+    hand.cards << new Card("4", "H")
+    hand.cards << new Card("5", "H")
+    hand.cards << new Card("6", "H")
+    hand.cards << new Card("7", "H")
+    hand.cards << new Card("8", "H")
+    hand
+  }
 }
