@@ -19,4 +19,14 @@ class Hand {
     hand.cards << new Card("10", "D")
     hand
   }
+
+  public static Hand mockPair() {
+    def hand = new Hand()
+    hand.cards << new Card("9", "H")
+    hand.cards << new Card("J", "C")
+    hand.cards << new Card("K", "C")
+    hand.cards << new Card("2", "S")
+    hand.cards << new Card("9", "D")
+    hand
+  }
 }
