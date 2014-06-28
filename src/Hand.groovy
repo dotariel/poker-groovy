@@ -69,4 +69,14 @@ class Hand {
     hand.cards << new Card("10", "H")
     hand
   }
+
+  public static Hand mockFullHouse() {
+    def hand = new Hand()
+    hand.cards << new Card("2", "H")
+    hand.cards << new Card("2", "D")
+    hand.cards << new Card("2", "S")
+    hand.cards << new Card("7", "D")
+    hand.cards << new Card("7", "H")
+    hand
+  }
 }
