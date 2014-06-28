@@ -27,5 +27,4 @@ class EvaluatorTest {
 
     assert result == winner
   }
-
 }

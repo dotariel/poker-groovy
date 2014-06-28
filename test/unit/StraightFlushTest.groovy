@@ -14,6 +14,5 @@ class StraightFlushTest {
     assert rank.evaluate(Hand.mockTwoPair())        == false
     assert rank.evaluate(Hand.mockPair())           == false
     assert rank.evaluate(Hand.mockHighCard())       == false
-
   }
 }
