@@ -10,5 +10,6 @@ class EvaluatorTest {
     assert evaluator.evaluate(Hand.mockPair()) instanceof Pair
     assert evaluator.evaluate(Hand.mockTwoPair()) instanceof TwoPair
     assert evaluator.evaluate(Hand.mockThreeOfAKind()) instanceof ThreeOfAKind
+    assert evaluator.evaluate(Hand.mockStraight()) instanceof Straight
   }
 }

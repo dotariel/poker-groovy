@@ -49,4 +49,14 @@ class Hand {
     hand.cards << new Card("9", "D")
     hand
   }
+
+  public static Hand mockStraight() {
+    def hand = new Hand()
+    hand.cards << new Card("4", "H")
+    hand.cards << new Card("5", "D")
+    hand.cards << new Card("6", "C")
+    hand.cards << new Card("7", "S")
+    hand.cards << new Card("8", "D")
+    hand
+  }
 }
