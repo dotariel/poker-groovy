@@ -28,25 +28,6 @@ class EvaluatorTest {
     assert new Evaluator().choose(a,b) == a
   }
 
-  @Test
-  public void should_determine_winner_by_resolving_tie() {
-    def a = new Hand(['2D', '5H', 'TC', '9S', '8D']) // High Card: T
-    def b = new Hand(['AD', 'KH', '2S', '3C', '8C']) // High Card: A
-
-    assert new Evaluator().choose(a,b) == b
-  }
-
-  @Test
-  public void should_result_in_tie() {
-    def a,b
-    def evaluator = new Evaluator()
-
-    a = new Hand(['AD', 'AH', '3C', '9S', '8D'])
-    b = new Hand(['AS', 'AC', '3S', '9C', '8H'])
-
-    assert evaluator.choose(a,b) == null
-  }
-
   private void checkRank(hand, rank) {
     new Evaluator().assignRank(hand)
     assert hand.rank.class == rank

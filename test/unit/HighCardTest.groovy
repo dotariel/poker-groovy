@@ -10,12 +10,6 @@ class HighCardTest {
     checkVisit(new Hand(), HighCard)
   }
 
-  @Ignore
-  @Test
-  public void should_return_rank() {
-    assert new HighCard().evaluate(new Hand()) == true
-  }
-
   @Test
   public void should_resolve_tie() {
     def a,b

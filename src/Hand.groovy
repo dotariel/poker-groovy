@@ -31,6 +31,44 @@ class Hand {
     cards.min { Card.val(it.value) }
   }
 
+  private Map<String, List<Card>> getPairs() {
+    cards.groupBy { it.value }.findAll { k,v -> v.size() == 2 }
+  }
+
+  private Map<String, List<Card>> getSets() {
+    cards.groupBy { it.value }.findAll { k,v -> v.size() == 3 } 
+  }
+
+  public int compare(Map<String,List<Card>> a, Map<String,List<Card>> b) {
+    def aKeys = a.keySet().sort().reverse() as List
+    def bKeys = b.keySet().sort().reverse() as List
+
+    while (aKeys.size() > 0 && bKeys.size() > 0) {
+      def c1 = aKeys.pop()
+      def c2 = bKeys.pop()
+
+      if (Card.val(c1) < Card.val(c2)) return 1
+      if (Card.val(c1) > Card.val(c2)) return -1
+    }
+
+    return 0
+  }
+
+  public int compare(List<Card> a, List<Card> b) {
+    def aKeys = a.sort{ Card.val(it.value) }.reverse() as List
+    def bKeys = b.sort{ Card.val(it.value) }.reverse() as List
+
+    while (aKeys.size() > 0 && bKeys.size() > 0) {
+      def c1 = aKeys.pop().value
+      def c2 = bKeys.pop().value
+
+      if (Card.val(c1) < Card.val(c2)) return 1
+      if (Card.val(c1) > Card.val(c2)) return -1
+    }
+
+    return 0
+  }
+
   public static Hand mockHighCard() {
     new Hand(['9H', 'JC', 'KC', '2S', 'TD'])
   }

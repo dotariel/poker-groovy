@@ -3,18 +3,28 @@ import org.junit.*
 @Mixin(RankTestMixin)
 class TwoPairTest {
 
+  def rank = new TwoPair()
+
   @Test
   public void should_set_rank_on_visit() {
     checkVisit(Hand.mockTwoPair(), TwoPair)
   }
 
-  @Ignore
   @Test
-  public void should_return_rank() {
-    def rank = new TwoPair()
+  public void should_resolve_tie() {
+    def a,b
 
-    assert rank.evaluate(Hand.mockTwoPair()) == true
-    assert rank.evaluate(Hand.mockPair()) == false
-    assert rank.evaluate(Hand.mockHighCard()) == false
+    a = new Hand(['AD','AH','7C','7S','8D']) // Two Pair: A,7
+    b = new Hand(['KD','KC','8C','8S','2C']) // Two Pair: K,8
+    checkWinner(rank,b,a)
+
+    a = new Hand(['2D','2H','3C','3S','8D']) // Two Pair: 2,3
+    b = new Hand(['4D','4C','2C','2S','8C']) // Two Pair: 2,4
+    checkWinner(rank,b,a)
+
+    a = new Hand(['2D','2H','3C','3S','8D']) // Two Pair: 2,3
+    b = new Hand(['2D','2H','3C','3S','8D']) // Two Pair: 2,3
+    checkTie(rank,a,b)
   }
+
 }

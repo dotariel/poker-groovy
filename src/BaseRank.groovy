@@ -1,18 +1,9 @@
 abstract class BaseRank implements Rank {
   Hand compare(Hand a, Hand b) {
-    a.sort()
-    b.sort()
+    int comp = a.compare(a.cards, b.cards)
 
-    def aCards = a.cards.reverse().clone()
-    def bCards = b.cards.reverse().clone()
-
-    while (aCards.size() > 0 && bCards.size() > 0) {
-      def c1 = aCards.pop()
-      def c2 = bCards.pop()
-
-      if (Card.val(c1.value) < Card.val(c2.value)) return a
-      if (Card.val(c1.value) > Card.val(c2.value)) return b
-    }
+    if (comp > 0) return a
+    if (comp < 0) return b
   }
 
   boolean visit(Hand hand) {

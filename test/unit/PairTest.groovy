@@ -10,15 +10,6 @@ class PairTest {
     checkVisit(Hand.mockPair(), Pair)
   }
 
-  @Ignore
-  @Test
-  public void should_return_rank() {
-    def rank = new Pair()
-
-    assert rank.evaluate(Hand.mockPair()) == true
-    assert rank.evaluate(Hand.mockHighCard()) == false
-  }
-
   @Test
   public void should_resolve_tie() {
     def a,b
