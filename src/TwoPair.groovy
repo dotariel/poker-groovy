@@ -6,4 +6,8 @@ class TwoPair implements Rank {
   Hand resolveTie(Hand a, Hand b) {
     a
   }
+
+  String toString() {
+    "Two Pair"
+  }
 }

@@ -6,4 +6,8 @@ class ThreeOfAKind implements Rank {
   Hand resolveTie(Hand a, Hand b) {
     a
   }
+
+  String toString() {
+    "Three of A Kind"
+  }
 }

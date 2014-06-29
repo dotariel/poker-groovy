@@ -1,6 +1,13 @@
 import org.junit.*
 
+import groovy.mock.interceptor.*
+
 class EvaluatorTest {
+
+  @After
+  public void after() {
+    Evaluator.reset()
+  }
 
   @Test
   public void should_return_highest_rank_for_a_given_hand() {
@@ -26,5 +33,34 @@ class EvaluatorTest {
     def result = evaluator.choose(a,b)
 
     assert result == a
+  }
+
+  @Test
+  public void should_determine_winner_by_resolving_tie() {
+    def rank = new RankOne()
+
+    Evaluator.ranks = [ rank ]
+
+    def a = new Hand(['5D', '5H', 'TC', '9S', '8D'])
+    def b = new Hand(['AD', 'KH', '2S', '3C', '8C'])
+
+    assert new Evaluator().choose(a,b) == a  
+    assert rank.evaluated
+    assert rank.tieResolved
+  }
+}
+
+class RankOne implements Rank {
+
+  boolean evaluated = false
+  boolean tieResolved = false
+
+  boolean evaluate(Hand hand) {
+    evaluated = true
+  }
+
+  Hand resolveTie(Hand a, Hand b) {
+    tieResolved = true
+    a
   }
 }

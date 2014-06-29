@@ -18,5 +18,4 @@ class BaseRank implements Rank {
       if (Card.val(c1.value) > Card.val(c2.value)) return b
     }
   }
-
 }

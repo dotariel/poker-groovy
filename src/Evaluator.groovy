@@ -1,27 +1,33 @@
 class Evaluator {
 
-  static List<Rank> ranks = [
-    new StraightFlush(),
-    new FourOfAKind(),
-    new FullHouse(),
-    new Flush(),
-    new Straight(),
-    new ThreeOfAKind(),
-    new TwoPair(),
-    new Pair(), 
-    new HighCard()
-  ]
+  protected static List<Rank> ranks
+
+  static reset() {
+    ranks = [
+      new StraightFlush(),
+      new FourOfAKind(),
+      new FullHouse(),
+      new Flush(),
+      new Straight(),
+      new ThreeOfAKind(),
+      new TwoPair(),
+      new Pair(), 
+      new HighCard()
+    ]
+  }
+  static {
+    reset()
+  }
  
   public Hand choose(Hand a, Hand b) {
-    if ( ranks.indexOf(getRank(a)) < ranks.indexOf(getRank(b)) )
-      return a
-
-    if ( ranks.indexOf(getRank(a)) < ranks.indexOf(getRank(b)) )
-      return b
-
-    if ( ranks.indexOf(getRank(a)) == ranks.indexOf(getRank(b)) ) {
+    if (getRankVal(a) < getRankVal(b)) return a
+    if (getRankVal(a) < getRankVal(b)) return b
+    if (getRankVal(a) == getRankVal(b))
       return getRank(a).resolveTie(a, b)
-    }
+  }
+
+  private int getRankVal(Hand hand) {
+    ranks.indexOf(getRank(hand))
   }
 
   private Rank getRank(Hand hand) {
