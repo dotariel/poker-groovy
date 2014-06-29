@@ -3,7 +3,7 @@ class Hand {
   List<Card> cards = []
 
   public Hand(List<String> str) {
-    str.each { s -> cards << new Card(s[0], s[1]) }
+    str.each { s -> cards << new Card(s[0] + s[1]) }
   }
 
   public List<Card> sort() {
