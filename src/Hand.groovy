@@ -16,12 +16,19 @@ class Hand {
   }
 
   public String toString() {
-    "${cards} (${rank})"
+    getString(this.rank)
   }
 
-  public Hand compareTo(Hand hand) {
-    // Compare the given hand to this, using the hand's rank to delegate
-    // valuation to.
+  private String getString(HighCard rank) {
+    "${cards} (${rank}: ${highCard.value})"
+  }
+
+  private String getString(Rank rank) {
+    "${cards} (${rank})" 
+  }
+
+  private Card getHighCard() {
+    cards.min { Card.val(it.value) }
   }
 
   public static Hand mockHighCard() {

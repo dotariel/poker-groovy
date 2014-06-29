@@ -1,4 +1,4 @@
-class BaseRank implements Rank {
+abstract class BaseRank implements Rank {
   Hand compare(Hand a, Hand b) {
     a.sort()
     b.sort()
