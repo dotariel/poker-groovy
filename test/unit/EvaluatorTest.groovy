@@ -1,7 +1,5 @@
 import org.junit.*
 
-import groovy.mock.interceptor.*
-
 class EvaluatorTest {
 
   @After
@@ -51,7 +49,6 @@ class EvaluatorTest {
 }
 
 class RankOne implements Rank {
-
   boolean evaluated = false
   boolean tieResolved = false
 
