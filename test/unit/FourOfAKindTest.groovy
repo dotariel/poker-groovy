@@ -1,7 +1,14 @@
 import org.junit.*
 
+@Mixin(RankTestMixin)
 class FourOfAKindTest {
 
+  @Test
+  public void should_set_rank_on_visit() {
+    checkVisit(Hand.mockFourOfAKind(), FourOfAKind)
+  }
+
+  @Ignore
   @Test
   public void should_return_rank() {
     def rank = new FourOfAKind()

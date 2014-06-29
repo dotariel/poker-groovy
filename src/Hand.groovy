@@ -1,6 +1,7 @@
 class Hand {
 
   List<Card> cards = []
+  Rank rank
 
   public Hand(List<String> str) {
     str.each { s -> cards << new Card(s[0] + s[1]) }
@@ -12,6 +13,15 @@ class Hand {
 
   public int size() {
     cards.size()
+  }
+
+  public String toString() {
+    "${cards} (${rank})"
+  }
+
+  public Hand compareTo(Hand hand) {
+    // Compare the given hand to this, using the hand's rank to delegate
+    // valuation to.
   }
 
   public static Hand mockHighCard() {

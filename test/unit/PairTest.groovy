@@ -6,6 +6,12 @@ class PairTest {
   def rank = new Pair()
 
   @Test
+  public void should_set_rank_on_visit() {
+    checkVisit(Hand.mockPair(), Pair)
+  }
+
+  @Ignore
+  @Test
   public void should_return_rank() {
     def rank = new Pair()
 
@@ -27,5 +33,4 @@ class PairTest {
     b = new Hand(['AS', 'AC', '3D', '9S', '8H'])
     checkWinner(rank,b,a)
   }
-
 }

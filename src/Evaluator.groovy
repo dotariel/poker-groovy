@@ -1,5 +1,4 @@
 class Evaluator {
-
   protected static List<Rank> ranks
 
   static reset() {
@@ -20,17 +19,21 @@ class Evaluator {
   }
  
   public Hand choose(Hand a, Hand b) {
-    if (getRankVal(a) < getRankVal(b)) return a
-    if (getRankVal(a) < getRankVal(b)) return b
-    if (getRankVal(a) == getRankVal(b))
-      return getRank(a).resolveTie(a, b)
+    assignRank(a)
+    assignRank(b)
+
+    if (a.rank == b.rank) 
+      return a.rank.compare(a,b)
+
+    if (rVal(a.rank) < rVal(b.rank)) return a
+    if (rVal(a.rank) > rVal(b.rank)) return b
   }
 
-  private int getRankVal(Hand hand) {
-    ranks.indexOf(getRank(hand))
+  private void assignRank(Hand hand) {
+    ranks.find { rank -> rank.visit(hand) }
   }
 
-  private Rank getRank(Hand hand) {
-    ranks.find { rank -> rank.evaluate(hand) }
-  } 
+  private int rVal(Rank r) {
+    ranks.indexOf(r)
+  }
 }

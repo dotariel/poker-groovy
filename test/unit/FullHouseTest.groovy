@@ -1,7 +1,14 @@
 import org.junit.*
 
+@Mixin(RankTestMixin)
 class FullHouseTest {
 
+  @Test
+  public void should_set_rank_on_visit() {
+    checkVisit(Hand.mockFullHouse(), FullHouse)
+  }
+
+  @Ignore
   @Test
   public void should_return_rank() {
     def rank = new FullHouse()

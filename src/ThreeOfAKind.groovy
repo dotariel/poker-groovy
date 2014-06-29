@@ -1,13 +1,16 @@
-class ThreeOfAKind implements Rank {
-  boolean evaluate(Hand hand) {
-    hand.cards.groupBy { c -> c.value }.count { k,v -> v.size() == 3} == 1
-  }
-
-  Hand resolveTie(Hand a, Hand b) {
-    a
+class ThreeOfAKind extends BaseRank {
+  Hand compare(Hand a, Hand b) {
+    throw new NotImplemented()
   }
 
   String toString() {
     "Three of A Kind"
+  }
+
+  boolean visit(Hand hand) {
+    if (hasSet(hand)) {
+      hand.rank = this
+      return true
+    }
   }
 }

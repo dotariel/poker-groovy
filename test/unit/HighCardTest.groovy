@@ -6,6 +6,12 @@ class HighCardTest {
   def rank = new HighCard()
 
   @Test
+  public void should_set_rank_on_visit() {
+    checkVisit(new Hand(), HighCard)
+  }
+
+  @Ignore
+  @Test
   public void should_return_rank() {
     assert new HighCard().evaluate(new Hand()) == true
   }

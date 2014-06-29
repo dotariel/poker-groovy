@@ -1,10 +1,13 @@
-class Flush implements Rank {
-  boolean evaluate(Hand hand) {
-    hand.cards.groupBy { c -> c.suit }.count { k,v -> v.size() == 5} == 1
+class Flush extends BaseRank {
+  Hand compare(Hand a, Hand b) {
+    throw new NotImplemented()
   }
 
-  Hand resolveTie(Hand a, Hand b) {
-    a
+  boolean visit(Hand hand) {
+    if (isFlush(hand)) {
+      hand.rank = this
+      return true
+    }
   }
 
   public String toString() {

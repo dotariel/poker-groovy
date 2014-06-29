@@ -1,7 +1,14 @@
 import org.junit.*
 
+@Mixin(RankTestMixin)
 class StraightTest {
 
+  @Test
+  public void should_set_rank_on_visit() {
+    checkVisit(Hand.mockStraight(), Straight)
+  }
+
+  @Ignore
   @Test
   public void should_return_rank() {
     def rank = new Straight()

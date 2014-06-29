@@ -1,4 +1,4 @@
 interface Rank {
-  boolean evaluate(Hand hand);
-  Hand resolveTie(Hand a, Hand b);
+  Hand compare(Hand a, Hand b)
+  boolean visit(Hand h)
 }

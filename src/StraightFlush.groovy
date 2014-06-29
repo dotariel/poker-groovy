@@ -1,13 +1,16 @@
-class StraightFlush implements Rank {
-  boolean evaluate(Hand hand) {
-    new Straight().evaluate(hand) && new Flush().evaluate(hand)
-  }
-
-  Hand resolveTie(Hand a, Hand b) {
-    a
+class StraightFlush extends BaseRank {
+  Hand compare(Hand a, Hand b) {
+    throw new NotImplemented()
   }
 
   String toString() {
     "Straight Flush"
+  }
+
+  boolean visit(Hand hand) {
+    if (isStraight(hand) && isFlush(hand)) {
+      hand.rank = this
+      return true
+    }
   }
 }

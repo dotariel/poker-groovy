@@ -1,5 +1,10 @@
 class RankTestMixin {
   void checkWinner(rank, winner, loser) {
-    assert rank.resolveTie(winner, loser) == winner
+    assert rank.compare(winner, loser) == winner
+  }
+
+  void checkVisit(hand, rank) {
+    rank.newInstance().visit(hand)
+    assert hand.rank?.class == rank
   }
 }

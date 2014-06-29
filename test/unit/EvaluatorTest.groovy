@@ -8,18 +8,16 @@ class EvaluatorTest {
   }
 
   @Test
-  public void should_return_highest_rank_for_a_given_hand() {
-    def evaluator = new Evaluator()
-
-    assert evaluator.getRank(Hand.mockHighCard()) instanceof HighCard
-    assert evaluator.getRank(Hand.mockPair()) instanceof Pair
-    assert evaluator.getRank(Hand.mockTwoPair()) instanceof TwoPair
-    assert evaluator.getRank(Hand.mockThreeOfAKind()) instanceof ThreeOfAKind
-    assert evaluator.getRank(Hand.mockStraight()) instanceof Straight
-    assert evaluator.getRank(Hand.mockFlush()) instanceof Flush
-    assert evaluator.getRank(Hand.mockFullHouse()) instanceof FullHouse
-    assert evaluator.getRank(Hand.mockFourOfAKind()) instanceof FourOfAKind
-    assert evaluator.getRank(Hand.mockStraightFlush()) instanceof StraightFlush
+  public void should_assign_highest_rank_for_a_given_hand() {
+    checkRank(Hand.mockHighCard(), HighCard)
+    checkRank(Hand.mockPair(), Pair)
+    checkRank(Hand.mockTwoPair(), TwoPair)
+    checkRank(Hand.mockThreeOfAKind(), ThreeOfAKind)
+    checkRank(Hand.mockStraight(), Straight)
+    checkRank(Hand.mockFlush(), Flush)
+    checkRank(Hand.mockFullHouse(), FullHouse)
+    checkRank(Hand.mockFourOfAKind(), FourOfAKind)
+    checkRank(Hand.mockStraightFlush(), StraightFlush)
   }
 
   @Test
@@ -27,37 +25,30 @@ class EvaluatorTest {
     def a = new Hand(['5D', '5H', 'TC', '9S', '8D'])
     def b = new Hand(['AD', 'KH', '2S', '3C', '8C'])
 
-    def evaluator = new Evaluator()
-    def result = evaluator.choose(a,b)
-
-    assert result == a
+    assert new Evaluator().choose(a,b) == a
   }
 
   @Test
   public void should_determine_winner_by_resolving_tie() {
-    def rank = new RankOne()
+    def a = new Hand(['2D', '5H', 'TC', '9S', '8D']) // High Card: T
+    def b = new Hand(['AD', 'KH', '2S', '3C', '8C']) // High Card: A
 
-    Evaluator.ranks = [ rank ]
-
-    def a = new Hand(['5D', '5H', 'TC', '9S', '8D'])
-    def b = new Hand(['AD', 'KH', '2S', '3C', '8C'])
-
-    assert new Evaluator().choose(a,b) == a  
-    assert rank.evaluated
-    assert rank.tieResolved
-  }
-}
-
-class RankOne implements Rank {
-  boolean evaluated = false
-  boolean tieResolved = false
-
-  boolean evaluate(Hand hand) {
-    evaluated = true
+    assert new Evaluator().choose(a,b) == b
   }
 
-  Hand resolveTie(Hand a, Hand b) {
-    tieResolved = true
-    a
+  @Test
+  public void should_result_in_tie() {
+    def a,b
+    def evaluator = new Evaluator()
+
+    a = new Hand(['AD', 'AH', '3C', '9S', '8D'])
+    b = new Hand(['AS', 'AC', '3S', '9C', '8H'])
+
+    assert evaluator.choose(a,b) == null
+  }
+
+  private void checkRank(hand, rank) {
+    new Evaluator().assignRank(hand)
+    assert hand.rank.class == rank
   }
 }
