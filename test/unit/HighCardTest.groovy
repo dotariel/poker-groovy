@@ -21,5 +21,9 @@ class HighCardTest {
     a = new Hand(['AD', 'KH', '3C', '9S', '8D'])
     b = new Hand(['AS', 'KD', '3S', '9D', '7C'])
     checkWinner(rank,a,b)
+
+    a = new Hand(['TD', 'KH', '3C', '9S', '8D'])
+    b = new Hand(['AS', 'QD', '3S', '9D', '7C'])
+    checkWinner(rank,b,a)
   }
 }

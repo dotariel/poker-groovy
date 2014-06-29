@@ -7,17 +7,15 @@ class HighCard implements Rank {
     a.sort()
     b.sort()
 
+    a.cards = a.cards.reverse()
+    b.cards = b.cards.reverse()
+
     while (a.size() > 0) {
       def c1 = a.cards.pop()
       def c2 = b.cards.pop()
 
-      if (c1.value > c2.value) {
-        return a
-      }
-
-      if (c1.value < c2.value) {
-        return b
-      }
+      if (Card.val(c1.value) < Card.val(c2.value)) return a
+      if (Card.val(c1.value) > Card.val(c2.value)) return b
     }
   }
 

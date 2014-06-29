@@ -24,4 +24,8 @@ class Card {
   public String toString() {
     "${value}${suit}"
   }
+
+  public static int val(String str) {
+    values.indexOf(str)    
+  }
 }
