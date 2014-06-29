@@ -21,5 +21,9 @@ class ThreeOfAKindTest {
     a = new Hand(['KS', 'KH', 'KD', '3C', '8C'])
     b = new Hand(['KS', 'KH', 'KD', '3C', '7D'])
     checkWinner(rank,a,b)
+
+    a = new Hand(['KS', 'KH', 'KD', '3C', '8C'])
+    b = new Hand(['KS', 'KH', 'KD', '3C', '8D'])
+    checkTie(rank,a,b)
   }
 }

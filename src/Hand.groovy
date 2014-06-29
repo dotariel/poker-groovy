@@ -19,12 +19,12 @@ class Hand {
     getString(this.rank)
   }
 
-  private String getString(HighCard rank) {
-    "${cards} (${rank}: ${highCard.value})"
-  }
-
   private String getString(Rank rank) {
     "${cards} (${rank})" 
+  }
+
+  private String getString(HighCard rank) {
+    "${cards} (${rank}: ${highCard.value})"
   }
 
   private Card getHighCard() {
