@@ -3,19 +3,23 @@ import org.junit.*
 @Mixin(RankTestMixin)
 class ThreeOfAKindTest {
 
+  def rank = new ThreeOfAKind()
+
   @Test
   public void should_set_rank_on_visit() {
     checkVisit(Hand.mockThreeOfAKind(), ThreeOfAKind)
   }
 
-  @Ignore
   @Test
-  public void should_return_rank() {
-    def rank = new ThreeOfAKind()
+  public void should_resolve_tie() {
+    def a,b
 
-    assert rank.evaluate(Hand.mockThreeOfAKind()) == true
-    assert rank.evaluate(Hand.mockTwoPair()) == false
-    assert rank.evaluate(Hand.mockPair()) == false
-    assert rank.evaluate(Hand.mockHighCard()) == false
+    a = new Hand(['KS', 'KH', 'KD', '3C', '8C'])
+    b = new Hand(['AD', 'AH', 'AC', '9S', '8D'])
+    checkWinner(rank,b,a)
+
+    a = new Hand(['KS', 'KH', 'KD', '3C', '8C'])
+    b = new Hand(['KS', 'KH', 'KD', '3C', '7D'])
+    checkWinner(rank,a,b)
   }
 }
