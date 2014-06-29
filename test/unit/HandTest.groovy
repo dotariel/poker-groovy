@@ -29,6 +29,11 @@ class HandTest {
   }
 
   @Test
+  public void should_get_quads() {
+    assert new Hand(['2S','2C','2H','2D','QS']).quads.size() == 1
+  }
+
+  @Test
   public void should_compare_cards() {
     def a,b
 

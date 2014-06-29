@@ -1,6 +1,11 @@
 class FourOfAKind extends BaseRank {
   Hand compare(Hand a, Hand b) {
-    throw new NotImplemented()
+    int comp = a.compare(a.quads, b.quads)
+    
+    if (comp > 0) return a
+    if (comp < 0) return b
+
+    super.compare(a,b)    
   }
   
   String toString() {

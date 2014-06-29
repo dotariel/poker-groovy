@@ -32,11 +32,19 @@ class Hand {
   }
 
   private Map<String, List<Card>> getPairs() {
-    cards.groupBy { it.value }.findAll { k,v -> v.size() == 2 }
+    getGroup(2)
   }
 
   private Map<String, List<Card>> getSets() {
-    cards.groupBy { it.value }.findAll { k,v -> v.size() == 3 } 
+    getGroup(3)
+  }
+
+  private Map<String, List<Card>> getQuads() {
+    getGroup(4)
+  }
+
+  private Map<String, List<Card>> getGroup(int count) {
+    cards.groupBy { it.value }.findAll { k,v -> v.size() == count }  
   }
 
   public int compare(Map<String,List<Card>> a, Map<String,List<Card>> b) {
