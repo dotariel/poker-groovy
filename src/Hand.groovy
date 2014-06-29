@@ -6,8 +6,12 @@ class Hand {
     str.each { s -> cards << new Card(s[0] + s[1]) }
   }
 
-  public List<Card> sort() {
-    cards.sort { c -> Card.values.indexOf(c.value) }
+  public void sort() {
+    this.cards = cards.sort { c -> Card.values.indexOf(c.value) } as List<Card>
+  }
+
+  public int size() {
+    cards.size()
   }
 
   public static Hand mockHighCard() {

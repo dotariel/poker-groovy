@@ -3,6 +3,10 @@ class FullHouse implements Rank {
     new Pair().evaluate(hand) && new ThreeOfAKind().evaluate(hand)
   }
 
+  Hand resolveTie(Hand a, Hand b) {
+    a
+  }
+  
   String toString() {
     "Full House"
   }

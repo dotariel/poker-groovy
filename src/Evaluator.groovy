@@ -18,6 +18,10 @@ class Evaluator {
 
     if ( ranks.indexOf(getRank(a)) < ranks.indexOf(getRank(b)) )
       return b
+
+    if ( ranks.indexOf(getRank(a)) == ranks.indexOf(getRank(b)) ) {
+      return getRank(a).resolveTie(a, b)
+    }
   }
 
   private Rank getRank(Hand hand) {

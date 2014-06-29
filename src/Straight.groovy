@@ -3,7 +3,15 @@ class Straight implements Rank {
     isConsecutive(hand.cards.collect { c -> Card.values.indexOf(c.value) })
   }
 
-  boolean isConsecutive(List<Integer> values) {
+  Hand resolveTie(Hand a, Hand b) {
+    a
+  }
+
+  String toString() {
+    "Straight"
+  }
+
+  private boolean isConsecutive(List<Integer> values) {
     def sorted = values.sort()
     for (int i=0; i<sorted.size(); i++) {
       if (sorted[i+1]) {
@@ -13,9 +21,5 @@ class Straight implements Rank {
     }
 
     return true
-  }
-
-  String toString() {
-    "Straight"
   }
 }

@@ -19,12 +19,12 @@ class EvaluatorTest {
 
   @Test
   public void should_determine_winner_based_on_higher_rank() {
-    def winner = new Hand(['5D', '5H', 'TC', '9S', '8D'])
-    def loser = new Hand(['AD', 'KH', '2S', '3C', '8C'])
+    def a = new Hand(['5D', '5H', 'TC', '9S', '8D'])
+    def b = new Hand(['AD', 'KH', '2S', '3C', '8C'])
 
     def evaluator = new Evaluator()
-    def result = evaluator.choose(winner, loser)
+    def result = evaluator.choose(a,b)
 
-    assert result == winner
+    assert result == a
   }
 }

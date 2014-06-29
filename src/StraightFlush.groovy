@@ -3,6 +3,10 @@ class StraightFlush implements Rank {
     new Straight().evaluate(hand) && new Flush().evaluate(hand)
   }
 
+  Hand resolveTie(Hand a, Hand b) {
+    a
+  }
+
   String toString() {
     "Straight Flush"
   }
