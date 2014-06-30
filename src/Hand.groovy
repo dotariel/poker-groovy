@@ -27,6 +27,10 @@ class Hand {
     "${cards} (${rank}: ${highCard.value})"
   }
 
+  private String getString(Pair rank) {
+    "${cards} (${rank}: ${pairs.find {k,v -> true}.value})"
+  }
+
   private Card getHighCard() {
     cards.min { Card.val(it.value) }
   }
