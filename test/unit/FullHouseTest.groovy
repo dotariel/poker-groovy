@@ -3,22 +3,27 @@ import org.junit.*
 @Mixin(RankTestMixin)
 class FullHouseTest {
 
+  def rank = new FullHouse()
+
   @Test
   public void should_set_rank_on_visit() {
     checkVisit(Hand.mockFullHouse(), FullHouse)
   }
 
-  @Ignore
   @Test
-  public void should_return_rank() {
-    def rank = new FullHouse()
+  public void should_resolve_tie() {
+    def a,b
 
-    assert rank.evaluate(Hand.mockFullHouse()) == true
-    assert rank.evaluate(Hand.mockFlush()) == false
-    assert rank.evaluate(Hand.mockStraight()) == false
-    assert rank.evaluate(Hand.mockThreeOfAKind()) == false
-    assert rank.evaluate(Hand.mockTwoPair()) == false
-    assert rank.evaluate(Hand.mockPair()) == false
-    assert rank.evaluate(Hand.mockHighCard()) == false
+    a = new Hand(['KS', 'KH', 'KD', '3C', '3H'])
+    b = new Hand(['AD', 'AH', 'AC', '9S', '9H'])
+    checkWinner(rank,b,a)
+
+    a = new Hand(['2S', '2H', '2D', 'JC', 'JH'])
+    b = new Hand(['5D', '5H', '5C', 'AS', 'AH'])
+    checkWinner(rank,b,a)
+
+    a = new Hand(['KS', 'KH', 'KD', '3C', '3H'])
+    b = new Hand(['KS', 'KH', 'KD', '3D', '3S'])
+    checkTie(rank,a,b)
   }
 }
