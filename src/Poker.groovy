@@ -8,6 +8,6 @@ class Poker {
     Hand h1 = new Hand(a.tokenize(' '))
     Hand h2 = new Hand(b.tokenize(' '))
 
-    println evaluator.choose(h1,h2)
+    println evaluator.choose(h1,h2) ?: "Tie" 
   }
 }
