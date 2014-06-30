@@ -3,21 +3,23 @@ import org.junit.*
 @Mixin(RankTestMixin)
 class FlushTest {
 
+  def rank = new Flush()
+
   @Test
   public void should_set_rank_on_visit() {
     checkVisit(Hand.mockFlush(), Flush)
   }
 
-  @Ignore
   @Test
-  public void should_return_rank() {
-    def rank = new Flush()
+  public void should_resolve_tie() {
+    def a,b
 
-    assert rank.evaluate(Hand.mockFlush()) == true
-    assert rank.evaluate(Hand.mockStraight()) == false
-    assert rank.evaluate(Hand.mockThreeOfAKind()) == false
-    assert rank.evaluate(Hand.mockTwoPair()) == false
-    assert rank.evaluate(Hand.mockPair()) == false
-    assert rank.evaluate(Hand.mockHighCard()) == false
-  }
+    a = new Hand(['5S', '2S', 'KS', '3S', '8S'])
+    b = new Hand(['4S', 'KS', 'AS', '7S', 'JS'])
+    checkWinner(rank,b,a)
+
+    a = new Hand(['KS', 'QS', 'JS', 'TS', '8S'])
+    b = new Hand(['KC', 'QC', 'JC', 'TC', '8C'])
+    checkTie(rank,a,b)
+  }  
 }

@@ -1,6 +1,6 @@
 class Flush extends BaseRank {
   Hand compare(Hand a, Hand b) {
-    throw new NotImplemented()
+    super.compare(a,b)
   }
 
   boolean visit(Hand hand) {
