@@ -2,6 +2,11 @@ import org.junit.*
 
 class HandTest {
 
+  @Test(expected=InvalidHand)
+  public void should_throw_exception_if_hand_is_not_correct_length() {
+    def hand = new Hand(['TC'])
+  }
+
   @Test
   public void should_make_hand_from_string() {
     def hand = new Hand(['TC', '9H', '3S', '4D', 'AH'])

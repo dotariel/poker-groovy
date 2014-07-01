@@ -3,7 +3,13 @@ class Hand {
   List<Card> cards = []
   Rank rank
 
+  private Hand() {
+  }
+
   public Hand(List<String> str) {
+    if (str.size() != 5)
+      throw new InvalidHand()
+
     str.each { s -> cards << new Card(s[0] + s[1]) }
   }
 
