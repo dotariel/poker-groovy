@@ -1,1 +1,0 @@
-class NotImplemented extends Exception { }
