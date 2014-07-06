@@ -15,7 +15,7 @@ class ThreeOfAKind implements Rank {
   }
 
   private List<Integer> getStrength(Hand h) {
-    def p = h.sets.keySet()[0]
+    def p = h.sets.collect { k,v -> v[0] }[0].value
     def q = h.cards.collect { it.value } - p
 
     [RANK] + p + q.sort().reverse() + 0 + 0

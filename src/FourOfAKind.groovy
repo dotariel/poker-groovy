@@ -15,7 +15,7 @@ class FourOfAKind implements Rank {
   }
 
   private List<Integer> getStrength(Hand h) {
-    def p = h.quads.keySet().first()
+    def p = h.quads.collect { k,v -> v[0] }[0].value
     def q = h.cards.collect { it.value } - p
 
     [RANK] + p + q.sort().reverse() + 0 + 0 + 0

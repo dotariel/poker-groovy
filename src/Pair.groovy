@@ -15,7 +15,7 @@ class Pair implements Rank {
   }
 
   private List<Integer> getStrength(Hand h) {
-    def p = h.pairs.keySet().first()
+    def p = h.pairs.collect { k,v -> v[0] }[0].value
     def q = h.cards.collect { it.value } - p
 
     [RANK] + p + q.sort().reverse() + 0

@@ -23,6 +23,7 @@ class Hand {
   }
 
   public String toString() {
+    sort()
     getString(this.rank)
   }
 
@@ -42,16 +43,20 @@ class Hand {
     cards.max { it.value }
   }
 
-  private Map<String, List<Card>> getPairs() {
+  private Map getPairs() {
     getGroup(2)
   }
 
-  private Map<String, List<Card>> getSets() {
+  private Map getSets() {
     getGroup(3)
   }
 
-  private Map<String, List<Card>> getQuads() {
+  private Map getQuads() {
     getGroup(4)
+  }
+
+  private Map getGroup(int count) {
+    cards.groupBy { it.face }.findAll { k,v -> v.size() == count }  
   }
 
   protected boolean isStraight() {
@@ -72,10 +77,6 @@ class Hand {
     }
 
     return true
-  }
-
-  private Map<String, List<Card>> getGroup(int count) {
-    cards.groupBy { it.value }.findAll { k,v -> v.size() == count }  
   }
 
   public static Hand mockHighCard() {

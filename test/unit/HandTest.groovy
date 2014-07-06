@@ -63,8 +63,8 @@ class HandTest {
     hand = new Hand(['9H', 'JC', 'KC', '2S', 'TD'])
     checkString(hand, new HighCard(), 'KC JC TD 9H 2S (High Card: K)')
 
-    hand = new Hand(['9H', '9C', 'KC', '2S', 'TD'])
-    checkString(hand, new Pair(), 'KC TD 9C 9H 2S (Pair: 9)')
+    hand = new Hand(['AH', 'AC', 'KC', '2S', 'TD'])
+    checkString(hand, new Pair(), 'AH AC KC TD 2S (Pair: A)')
   }
 
   private def checkString(Hand h, Rank r, String expected) {
