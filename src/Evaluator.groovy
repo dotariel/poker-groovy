@@ -1,8 +1,5 @@
 class Evaluator {
-  protected static List<Rank> ranks
-
-  static reset() {
-    ranks = [
+  protected static List<Rank> ranks = [
       new StraightFlush(),
       new FourOfAKind(),
       new FullHouse(),
@@ -13,20 +10,22 @@ class Evaluator {
       new Pair(), 
       new HighCard()
     ]
-  }
-  static {
-    reset()
-  }
- 
+  
   public Hand choose(Hand a, Hand b) {
-    assignRank(a)
-    assignRank(b)
+    [a,b].each { assignRank(it) }
 
     if (a.rank == b.rank) 
       return a.rank.compare(a,b)
 
     if (rVal(a.rank) < rVal(b.rank)) return a
     if (rVal(a.rank) > rVal(b.rank)) return b
+  }
+
+  public Hand chooseWinner(Hand a, Hand b) {
+    for (int i=0; i<a.strength.size() ; i++) {
+      if (a.strength[i] > b.strength[i]) return a
+      if (a.strength[i] < b.strength[i]) return b
+    }
   }
 
   private void assignRank(Hand hand) {

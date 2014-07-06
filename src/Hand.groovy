@@ -2,6 +2,7 @@ class Hand {
 
   List<Card> cards = []
   Rank rank
+  List<Integer> strength = []
 
   private Hand() {
   }
@@ -13,8 +14,9 @@ class Hand {
     str.each { s -> cards << new Card(s[0] + s[1]) }
   }
 
-  public void sort() {
+  public Hand sort() {
     this.cards = cards.sort { c -> Card.values.indexOf(c.value) } as List<Card>
+    this
   }
 
   public int size() {

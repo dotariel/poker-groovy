@@ -14,14 +14,26 @@ class PairTest {
   public void should_resolve_tie() {
     def a,b
 
-    // Different Pairs
     a = new Hand(['AD', 'AH', '3C', '9S', '8D'])
     b = new Hand(['7S', '7H', '2S', '3C', '8C'])
     checkWinner(rank,a,b)
 
-    // Same Pair, different kickers
     a = new Hand(['AD', 'AH', '3C', '7S', '8C'])
     b = new Hand(['AS', 'AC', '3D', '9S', '8H'])
     checkWinner(rank,b,a)
+  }
+
+  @Test
+  public void should_get_strength() {
+    def a,b
+
+    a = new Hand(['AD', 'AH', '3C', '9S', '8D'])
+    b = new Hand(['7S', '7H', '2S', '3C', '8C'])
+
+    rank.visit(a)
+    rank.visit(b)
+
+    assert [1,14,9,8,3,0] == a.strength
+    assert [1,7,8,3,2,0] == b.strength
   }
 }
