@@ -11,8 +11,8 @@ class Deck {
 
   private void make() {
     Card.suits.each { suit ->
-      Card.values.each { value ->
-        cards << new Card(value + suit)
+      Card.values.each { k, v ->
+        cards << new Card(k + suit)
       }
     }
   }

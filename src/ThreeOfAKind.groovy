@@ -1,4 +1,4 @@
-class ThreeOfAKind extends BaseRank {
+class ThreeOfAKind implements Rank {
 
   private static int RANK = 3
 
@@ -16,8 +16,8 @@ class ThreeOfAKind extends BaseRank {
 
   private List<Integer> getStrength(Hand h) {
     def p = h.sets.keySet()[0]
-    def q = h.sort().cards.collect { it.value } - p
+    def q = h.cards.collect { it.value } - p
 
-    [RANK] + val(p) + val(q) + 0 + 0
+    [RANK] + p + q.sort().reverse() + 0 + 0
   }
 }

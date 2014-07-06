@@ -1,4 +1,4 @@
-class FullHouse extends BaseRank {
+class FullHouse implements Rank {
 
   private static int RANK = 6
 
@@ -15,9 +15,6 @@ class FullHouse extends BaseRank {
   }
 
   private List<Integer> getStrength(Hand h) {
-    def p0 = h.sets.keySet()[0]
-    def p1 = h.pairs.keySet()[0]
-
-    [RANK] + val(p0) + val(p1) + 0 + 0 + 0
+    [RANK] + h.sets.keySet()[0] + h.pairs.keySet()[0] + 0 + 0 + 0
   }
 }

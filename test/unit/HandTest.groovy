@@ -19,7 +19,7 @@ class HandTest {
     def hand = Hand.mockHighCard()
     hand.sort()
 
-    assert hand.cards.collect { it.value } == ['K', 'J', 'T', '9', '2']
+    assert hand.cards.collect { it.face } == ['K', 'J', 'T', '9', '2']
   }
 
   @Test

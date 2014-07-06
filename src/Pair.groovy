@@ -1,4 +1,4 @@
-class Pair extends BaseRank {
+class Pair implements Rank {
 
   private static int RANK = 1
 
@@ -16,8 +16,8 @@ class Pair extends BaseRank {
 
   private List<Integer> getStrength(Hand h) {
     def p = h.pairs.keySet().first()
-    def q = h.sort().cards.collect { it.value } - p
+    def q = h.cards.collect { it.value } - p
 
-    [RANK] + val(p) + val(q) + 0
+    [RANK] + p + q.sort().reverse() + 0
   }
 }

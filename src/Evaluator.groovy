@@ -23,8 +23,4 @@ class Evaluator {
   private void assignRank(Hand hand) {
     ranks.find { rank -> rank.visit(hand) }
   }
-
-  private int rVal(Rank r) {
-    ranks.indexOf(r)
-  }
 }

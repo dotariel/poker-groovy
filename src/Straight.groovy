@@ -1,4 +1,4 @@
-class Straight extends BaseRank {
+class Straight implements Rank {
 
   private static int RANK = 4
 
@@ -15,6 +15,6 @@ class Straight extends BaseRank {
   }
 
   private List<Integer> getStrength(Hand h) {
-    [RANK] + h.sort().cards.collect { Card.getCardValue(it.value) }
+    [RANK] + h.cards.collect { it.value }.sort().reverse()
   }
 }

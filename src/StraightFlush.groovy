@@ -1,4 +1,4 @@
-class StraightFlush extends BaseRank {
+class StraightFlush implements Rank {
 
   private static int RANK = 8
 
@@ -15,6 +15,6 @@ class StraightFlush extends BaseRank {
   }
 
   private List<Integer> getStrength(Hand h) {
-    [RANK] + h.sort().cards.collect { Card.getCardValue(it.value) }
+    [RANK] + h.cards.collect { it.value }.sort().reverse()
   }
 }

@@ -1,8 +1,22 @@
 class Card {
 
-  static List<String> values = ['A','K','Q','J','T','9','8','7','6','5','4','3','2']
-  static List<String> suits = ['C', 'H', 'D', 'S']
-  static Map<String,Integer> faces = ['T':10, 'J':11, 'Q':12, 'K':13, 'A':14]
+  static List suits = ['C','H','D','S']
+
+  static Map values = [
+    '2': 2,
+    '3': 3,
+    '4': 4,
+    '5': 5,
+    '6': 6,
+    '7': 7,
+    '8': 8,
+    '9': 9,
+    'T': 10,
+    'J': 11,
+    'Q': 12,
+    'K': 13,
+    'A': 14 
+  ]
 
   private String str
 
@@ -13,7 +27,8 @@ class Card {
     this.str = str
   }
 
-  public String getValue() {
+
+  public String getFace() {
     str[0]
   }
 
@@ -21,16 +36,17 @@ class Card {
     str[1]
   }
 
+  public int getValue() {
+    values[face]
+  }
+
   @Override
   public String toString() {
-    "${value}${suit}"
+    "${face}${suit}"
   }
 
   public static int val(String str) {
-    values.indexOf(str)    
-  }
-
-  public static int getCardValue(String s) {
-    faces[s] ?: new Integer(s)
+    values.indexOf(str)
   }
 }
+

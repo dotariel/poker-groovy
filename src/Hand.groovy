@@ -15,7 +15,7 @@ class Hand {
   }
 
   public Hand sort() {
-    this.cards = cards.sort { c -> Card.values.indexOf(c.value) } as List<Card>
+    this.cards = cards.sort { c -> c.value }.reverse() as List<Card>
     this
   }
 
@@ -56,7 +56,7 @@ class Hand {
   }
 
   protected boolean isStraight() {
-    isConsecutive(cards.collect { Card.values.indexOf(it.value) })
+    isConsecutive(cards.collect { it.value })
   }
 
   protected boolean isFlush() {
