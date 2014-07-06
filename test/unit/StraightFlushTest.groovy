@@ -11,15 +11,17 @@ class StraightFlushTest {
   }
 
   @Test
-  public void should_resolve_tie() {
+  public void should_get_strength() {
     def a,b
 
     a = new Hand(['4S', '5S', '6S', '7S', '8S'])
     b = new Hand(['6C', '7C', '8C', '9C', 'TC'])
-    checkWinner(rank,b,a)
 
-    a = new Hand(['4S', '5S', '6S', '7S', '8S'])
-    b = new Hand(['4C', '5C', '6C', '7C', '8C'])
-    checkTie(rank,a,b)
+    rank.visit(a)
+    rank.visit(b)
+
+    assert [8,8,7,6,5,4] == a.strength
+    assert [8,10,9,8,7,6] == b.strength
   }
+
 }

@@ -2,26 +2,16 @@ class TwoPair extends BaseRank {
 
   private static int RANK = 2
 
-  Hand compare(Hand a, Hand b) {
-    int comp = a.compare(a.pairs, b.pairs)
-    
-    if (comp > 0) return a
-    if (comp < 0) return b
-
-    super.compare(a,b)    
-  }
-
-  String toString() {
-    "Two Pair"
-  }
-
   boolean visit(Hand hand) {
-
     if (hand.pairs.size() == 2) {
       hand.rank = this
       hand.strength = getStrength(hand)
       return true
     }
+  }
+
+  String toString() {
+    "Two Pair"
   }
 
   private List<Integer> getStrength(Hand h) {

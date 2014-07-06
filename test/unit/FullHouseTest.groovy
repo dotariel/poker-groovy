@@ -11,19 +11,16 @@ class FullHouseTest {
   }
 
   @Test
-  public void should_resolve_tie() {
+  public void should_get_strength() {
     def a,b
 
     a = new Hand(['KS', 'KH', 'KD', '3C', '3H'])
     b = new Hand(['AD', 'AH', 'AC', '9S', '9H'])
-    checkWinner(rank,b,a)
 
-    a = new Hand(['2S', '2H', '2D', 'JC', 'JH'])
-    b = new Hand(['5D', '5H', '5C', 'AS', 'AH'])
-    checkWinner(rank,b,a)
+    rank.visit(a)
+    rank.visit(b)
 
-    a = new Hand(['KS', 'KH', 'KD', '3C', '3H'])
-    b = new Hand(['KS', 'KH', 'KD', '3D', '3S'])
-    checkTie(rank,a,b)
+    assert [6,13,3,0,0,0] == a.strength
+    assert [6,14,9,0,0,0] == b.strength
   }
 }

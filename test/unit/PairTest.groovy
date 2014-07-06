@@ -11,19 +11,6 @@ class PairTest {
   }
 
   @Test
-  public void should_resolve_tie() {
-    def a,b
-
-    a = new Hand(['AD', 'AH', '3C', '9S', '8D'])
-    b = new Hand(['7S', '7H', '2S', '3C', '8C'])
-    checkWinner(rank,a,b)
-
-    a = new Hand(['AD', 'AH', '3C', '7S', '8C'])
-    b = new Hand(['AS', 'AC', '3D', '9S', '8H'])
-    checkWinner(rank,b,a)
-  }
-
-  @Test
   public void should_get_strength() {
     def a,b
 

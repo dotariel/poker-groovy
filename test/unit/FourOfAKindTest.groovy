@@ -11,19 +11,16 @@ class FourOfAKindTest {
   }
 
   @Test
-  public void should_resolve_tie() {
+  public void should_get_strength() {
     def a,b
 
     a = new Hand(['KS', 'KH', 'KD', 'KC', '8C'])
     b = new Hand(['AD', 'AH', 'AC', 'AS', '8D'])
-    checkWinner(rank,b,a)
 
-    a = new Hand(['KS', 'KH', 'KD', 'KC', '8C'])
-    b = new Hand(['KS', 'KH', 'KD', 'KC', '9D'])
-    checkWinner(rank,b,a)
+    rank.visit(a)
+    rank.visit(b)
 
-    a = new Hand(['KS', 'KH', 'KD', 'KC', '8C'])
-    b = new Hand(['KS', 'KH', 'KD', 'KC', '8C'])
-    checkTie(rank,a,b)
+    assert [7,13,8,0,0,0] == a.strength
+    assert [7,14,8,0,0,0] == b.strength
   }
 }

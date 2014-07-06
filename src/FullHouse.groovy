@@ -1,26 +1,23 @@
 class FullHouse extends BaseRank {
-  Hand compare(Hand a, Hand b) {
-    int comp = a.compare(a.sets, b.sets)
-    
-    if (comp > 0) return a
-    if (comp < 0) return b
 
-    comp = a.compare(a.pairs, b.pairs)
-    
-    if (comp > 0) return a
-    if (comp < 0) return b
+  private static int RANK = 6
 
-    super.compare(a,b)    
+  boolean visit(Hand hand) {
+    if (hand.sets.size() == 1 && hand.pairs.size() == 1) {
+      hand.rank = this
+      hand.strength = getStrength(hand)
+      return true
+    }
   }
-  
+
   String toString() {
     "Full House"
   }
 
-  boolean visit(Hand hand) {
-    if (hasPair(hand) && hasSet(hand)) {
-      hand.rank = this
-      return true
-    }
+  private List<Integer> getStrength(Hand h) {
+    def p0 = h.sets.keySet()[0]
+    def p1 = h.pairs.keySet()[0]
+
+    [RANK] + val(p0) + val(p1) + 0 + 0 + 0
   }
 }

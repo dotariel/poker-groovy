@@ -55,38 +55,28 @@ class Hand {
     getGroup(4)
   }
 
+  protected boolean isStraight() {
+    isConsecutive(cards.collect { Card.values.indexOf(it.value) })
+  }
+
+  protected boolean isFlush() {
+    cards.groupBy { it.suit }.count { k,v -> v.size() == 5 } == 1
+  }
+
+  private boolean isConsecutive(List<Integer> values) {
+    def sorted = values.sort()
+    for (int i=0; i<sorted.size(); i++) {
+      if (sorted[i+1]) {
+        if (sorted[i+1] != sorted[i]+1) 
+          return false  
+      }
+    }
+
+    return true
+  }
+
   private Map<String, List<Card>> getGroup(int count) {
     cards.groupBy { it.value }.findAll { k,v -> v.size() == count }  
-  }
-
-  public int compare(Map<String,List<Card>> a, Map<String,List<Card>> b) {
-    def aKeys = a.keySet().sort().reverse() as List
-    def bKeys = b.keySet().sort().reverse() as List
-
-    while (aKeys.size() > 0 && bKeys.size() > 0) {
-      def c1 = aKeys.pop()
-      def c2 = bKeys.pop()
-
-      if (Card.val(c1) < Card.val(c2)) return 1
-      if (Card.val(c1) > Card.val(c2)) return -1
-    }
-
-    return 0
-  }
-
-  public int compare(List<Card> a, List<Card> b) {
-    def aKeys = a.sort{ Card.val(it.value) }.reverse() as List
-    def bKeys = b.sort{ Card.val(it.value) }.reverse() as List
-
-    while (aKeys.size() > 0 && bKeys.size() > 0) {
-      def c1 = aKeys.pop().value
-      def c2 = bKeys.pop().value
-
-      if (Card.val(c1) < Card.val(c2)) return 1
-      if (Card.val(c1) > Card.val(c2)) return -1
-    }
-
-    return 0
   }
 
   public static Hand mockHighCard() {

@@ -1,16 +1,20 @@
 class Flush extends BaseRank {
-  Hand compare(Hand a, Hand b) {
-    super.compare(a,b)
-  }
+
+  private static int RANK = 5
 
   boolean visit(Hand hand) {
-    if (isFlush(hand)) {
+    if (hand.isFlush()) {
       hand.rank = this
+      hand.strength = getStrength(hand)
       return true
     }
   }
 
   public String toString() {
     "Flush"
+  }
+
+  private List<Integer> getStrength(Hand h) {
+    [RANK] + h.sort().cards.collect { Card.getCardValue(it.value) }
   }
 }

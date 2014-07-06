@@ -11,15 +11,16 @@ class FlushTest {
   }
 
   @Test
-  public void should_resolve_tie() {
+  public void should_get_strength() {
     def a,b
 
     a = new Hand(['5S', '2S', 'KS', '3S', '8S'])
     b = new Hand(['4S', 'KS', 'AS', '7S', 'JS'])
-    checkWinner(rank,b,a)
 
-    a = new Hand(['KS', 'QS', 'JS', 'TS', '8S'])
-    b = new Hand(['KC', 'QC', 'JC', 'TC', '8C'])
-    checkTie(rank,a,b)
-  }  
+    rank.visit(a)
+    rank.visit(b)
+
+    assert [5,13,8,5,3,2] == a.strength
+    assert [5,14,13,11,7,4] == b.strength
+  }
 }

@@ -39,6 +39,19 @@ class HandTest {
   }
 
   @Test
+  public void should_determine_straight() {
+    assert new Hand(['2S','3C','4H','5D','6S']).isStraight() == true
+    assert new Hand(['2S','3C','4H','5D','7S']).isStraight() == false
+  }
+
+  @Test
+  public void should_determine_flush() {
+    assert new Hand(['2S','3S','9S','TS','AS']).isFlush() == true
+    assert new Hand(['2S','3C','4H','5D','7S']).isFlush() == false
+  }
+
+  @Ignore
+  @Test
   public void should_compare_cards() {
     def a,b
 

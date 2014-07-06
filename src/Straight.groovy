@@ -1,16 +1,20 @@
 class Straight extends BaseRank {
-  Hand compare(Hand a, Hand b) {
-    super.compare(a,b)
+
+  private static int RANK = 4
+
+  boolean visit(Hand hand) {
+    if (hand.isStraight()) {
+      hand.rank = this
+      hand.strength = getStrength(hand)
+      return true
+    }
   }
 
   String toString() {
     "Straight"
   }
 
-  boolean visit(Hand hand) {
-    if (isStraight(hand)) {
-      hand.rank = this
-      return true
-    }
+  private List<Integer> getStrength(Hand h) {
+    [RANK] + h.sort().cards.collect { Card.getCardValue(it.value) }
   }
 }
