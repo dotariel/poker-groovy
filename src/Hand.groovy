@@ -1,8 +1,8 @@
 class Hand {
 
   List<Card> cards = []
-  Rank rank
   List<Integer> strength = []
+  Rank rank
 
   private Hand() {
   }
