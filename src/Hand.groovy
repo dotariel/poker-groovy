@@ -32,11 +32,11 @@ class Hand {
   }
 
   private String getString(HighCard rank) {
-    "${cards} (${rank}: ${highCard.value})"
+    sort().cards.collect { it.toString() }.join(' ') + " (High Card: ${highCard.face})"
   }
 
   private String getString(Pair rank) {
-    "${cards} (${rank}: ${pairs.find {k,v -> true}.value})"
+    sort().cards.collect { it.toString() }.join(' ') + " (Pair: ${pairs.keySet().first()})"
   }
 
   private Card getHighCard() {

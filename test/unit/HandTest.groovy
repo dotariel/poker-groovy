@@ -56,6 +56,21 @@ class HandTest {
     assert new Hand(['2S','3S','9S','TS','4S']).highCard.face == 'T'
   }
 
+  @Test
+  public void should_get_string() {
+    def hand
+
+    hand = new Hand(['9H', 'JC', 'KC', '2S', 'TD'])
+    checkString(hand, new HighCard(), 'KC JC TD 9H 2S (High Card: K)')
+
+    hand = new Hand(['9H', '9C', 'KC', '2S', 'TD'])
+    checkString(hand, new Pair(), 'KC TD 9C 9H 2S (Pair: 9)')
+  }
+
+  private def checkString(Hand h, Rank r, String expected) {
+    h.rank = r
+    assert h.toString() == expected
+  }
 
   private def makeSet(List<String> str) {
     def set = [:]
