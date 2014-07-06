@@ -4,8 +4,7 @@ class Hand {
   List<Integer> strength = []
   Rank rank
 
-  private Hand() {
-  }
+  private Hand() { }
 
   public Hand(List<String> str) {
     if (str.size() != 5)

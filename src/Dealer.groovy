@@ -1,5 +1,4 @@
 class Dealer {
-
   Deck deck
 
   public Dealer() {

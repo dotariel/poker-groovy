@@ -27,7 +27,6 @@ class Card {
     this.str = str
   }
 
-
   public String getFace() {
     str[0]
   }
@@ -44,9 +43,4 @@ class Card {
   public String toString() {
     "${face}${suit}"
   }
-
-  public static int val(String str) {
-    values.indexOf(str)
-  }
 }
-

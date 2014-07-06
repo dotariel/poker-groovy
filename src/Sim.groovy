@@ -6,11 +6,7 @@ class Sim {
 
     dealer.deck.shuffle()
 
-    5.times {
-      hands.each { h ->
-        h.cards << dealer.deal()
-      }
-    }
+    5.times { hands.each { h -> h.cards << dealer.deal() } }
 
     def winner = evaluator.choose(hands[0], hands[1])
 
