@@ -40,7 +40,7 @@ class Hand {
   }
 
   private Card getHighCard() {
-    cards.min { Card.val(it.value) }
+    cards.max { it.value }
   }
 
   private Map<String, List<Card>> getPairs() {

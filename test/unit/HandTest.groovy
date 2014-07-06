@@ -50,23 +50,12 @@ class HandTest {
     assert new Hand(['2S','3C','4H','5D','7S']).isFlush() == false
   }
 
-  @Ignore
   @Test
-  public void should_compare_cards() {
-    def a,b
-
-    a = makeSet(['A','K'])
-    b = makeSet(['A','Q'])
-    assert new Hand().compare(a,b) == 1
-
-    a = makeSet(['T','2'])
-    b = makeSet(['3','4'])
-    assert new Hand().compare(a,b) == -1
-
-    a = makeSet(['T','2'])
-    b = makeSet(['T','2'])
-    assert new Hand().compare(a,b) == 0
+  public void should_get_high_card() {
+    assert new Hand(['2S','3S','9S','TS','AS']).highCard.face == 'A'
+    assert new Hand(['2S','3S','9S','TS','4S']).highCard.face == 'T'
   }
+
 
   private def makeSet(List<String> str) {
     def set = [:]
