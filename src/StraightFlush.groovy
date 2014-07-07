@@ -4,16 +4,15 @@ class StraightFlush implements Rank {
 
   boolean visit(Hand hand) {
     if (hand.isStraight() && hand.isFlush()) {
-      hand.assignStrength(this, getStrength(hand))
+      hand.setRank(this) { h ->
+        [RANK] + h.cards.collect { it.value }.sort { a,b -> b <=> a }
+      }
+
       return true
     }
   }
 
   String toString() {
     "Straight Flush"
-  }
-
-  private List getStrength(Hand hand) {
-    [RANK] + hand.cards.collect { it.value }.sort { a,b -> b <=> a }
   }
 }

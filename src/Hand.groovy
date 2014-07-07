@@ -31,6 +31,11 @@ class Hand {
     this.strength = strength
   }
 
+  public void setRank(Rank rank, Closure closure) {
+    this.rank = rank
+    this.strength = closure(this)
+  }
+
   private String getString(Rank rank) {
     "${cards} (${rank})" 
   }

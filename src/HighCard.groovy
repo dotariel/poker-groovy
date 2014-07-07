@@ -3,15 +3,14 @@ class HighCard implements Rank {
   private static int RANK = 0
 
   boolean visit(Hand hand) {
-    hand.assignStrength(this, getStrength(hand))
+    hand.setRank(this) { h ->
+      [RANK] + h.cards.collect { it.value }.sort { a,b -> b <=> a }
+    }
+
     true
   }
 
   String toString() {
     "High Card"
-  }
-
-  private List getStrength(Hand hand) {
-    [RANK] + hand.cards.collect { it.value }.sort { a,b -> b <=> a }
   }
 }

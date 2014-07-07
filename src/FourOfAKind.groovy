@@ -4,19 +4,17 @@ class FourOfAKind implements Rank {
 
   boolean visit(Hand hand) {
     if (hand.quads.size() == 1) {
-      hand.assignStrength(this, getStrength(hand))
+      hand.setRank(this) { h ->
+        def p = h.quads.collect { k,v -> v[0] }[0].value
+        def q = h.cards.collect { it.value } - p
+
+        [RANK] + p + q.sort { a,b -> b <=> a } + [0,0,0]
+      }
       return true
     }
   }
 
   String toString() {
     "Four of a Kind"
-  }
-
-  private List getStrength(Hand hand) {
-    def p = hand.quads.collect { k,v -> v[0] }[0].value
-    def q = hand.cards.collect { it.value } - p
-
-    [RANK] + p + q.sort { a,b -> b <=> a } + [0,0,0]
   }
 }

@@ -4,16 +4,15 @@ class Flush implements Rank {
 
   boolean visit(Hand hand) {
     if (hand.isFlush()) {
-      hand.assignStrength(this, getStrength(hand))
+      hand.setRank(this) { h ->
+        [RANK] + h.cards.collect { it.value }.sort { a,b -> b <=> a } 
+      }
+      
       return true
     }
   }
 
   public String toString() {
     "Flush"
-  }
-
-  private List getStrength(Hand h) {
-    [RANK] + h.cards.collect { it.value }.sort { a,b -> b <=> a } 
   }
 }
