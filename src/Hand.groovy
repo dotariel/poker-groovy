@@ -1,25 +1,24 @@
 class Hand {
 
-  List<Card> cards = []
-  List<Integer> strength = []
+  List cards = []
+  List strength = []
   Rank rank
 
   private Hand() { }
 
-  public Hand(List<String> str) {
-    if (str.size() != 5)
+  public Hand(List cardList) {
+    if (cardList.size() != 5)
       throw new InvalidHand()
 
-    str.each { s -> cards << new Card(s[0] + s[1]) }
+    cardList.each { s -> cards << new Card(s[0] + s[1]) }
   }
 
-  public Hand sort() {
-    this.cards = cards.sort { c -> c.value }.reverse() as List<Card>
-    this
+  public void sort() {
+    this.cards = cards.sort { a,b -> b.value <=> a.value } as List
   }
 
   public int size() {
-    cards.size()
+    this.cards.size()
   }
 
   public String toString() {
@@ -32,11 +31,11 @@ class Hand {
   }
 
   private String getString(HighCard rank) {
-    sort().cards.collect { it.toString() }.join(' ') + " (High Card: ${highCard.face})"
+    cards.collect { it.toString() }.join(' ') + " (High Card: ${highCard.face})"
   }
 
   private String getString(Pair rank) {
-    sort().cards.collect { it.toString() }.join(' ') + " (Pair: ${pairs.keySet().first()})"
+    cards.collect { it.toString() }.join(' ') + " (Pair: ${pairs.keySet().first()})"
   }
 
   private Card getHighCard() {
@@ -67,7 +66,7 @@ class Hand {
     cards.groupBy { it.suit }.count { k,v -> v.size() == 5 } == 1
   }
 
-  private boolean isConsecutive(List<Integer> values) {
+  private boolean isConsecutive(List values) {
     def sorted = values.sort()
     for (int i=0; i<sorted.size(); i++) {
       if (sorted[i+1]) {

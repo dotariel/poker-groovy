@@ -1,5 +1,5 @@
 class Evaluator {
-  protected static List<Rank> ranks = [
+  protected static List ranks = [
       new StraightFlush(),
       new FourOfAKind(),
       new FullHouse(),

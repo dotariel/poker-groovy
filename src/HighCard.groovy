@@ -12,7 +12,7 @@ class HighCard implements Rank {
     "High Card"
   }
 
-  private List<Integer> getStrength(Hand h) {
-    [RANK] + h.cards.collect { it.value }.sort().reverse()
+  private List getStrength(Hand hand) {
+    [RANK] + hand.cards.collect { it.value }.sort { a,b -> b <=> a }
   }
 }

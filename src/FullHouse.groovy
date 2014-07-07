@@ -14,10 +14,10 @@ class FullHouse implements Rank {
     "Full House"
   }
 
-  private List<Integer> getStrength(Hand h) {
-    def p = h.sets.collect { k,v -> v[0] }[0].value
-    def q = h.pairs.collect { k,v -> v[0] }[0].value
+  private List getStrength(Hand hand) {
+    def p = hand.sets.collect { k,v -> v[0] }[0].value
+    def q = hand.pairs.collect { k,v -> v[0] }[0].value
 
-    [RANK] + p + q + 0 + 0 + 0
+    [RANK] + p + q + [0,0,0]
   }
 }

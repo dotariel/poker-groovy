@@ -1,5 +1,5 @@
 class Deck {
-  List<Card> cards = []
+  List cards = []
 
   public Deck() {
     make()

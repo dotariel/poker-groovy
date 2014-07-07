@@ -14,12 +14,12 @@ class TwoPair implements Rank {
     "Two Pair"
   }
 
-  private List<Integer> getStrength(Hand h) {
-    def p0 = h.pairs.collect { k,v -> v[0] }[0].value
-    def p1 = h.pairs.collect { k,v -> v[0] }[1].value
+  private List getStrength(Hand hand) {
+    def p0 = hand.pairs.collect { k,v -> v[0] }[0].value
+    def p1 = hand.pairs.collect { k,v -> v[0] }[1].value
 
-    def q = h.cards.collect { it.value } - p0 - p1
+    def q = hand.cards.collect { it.value } - p0 - p1
 
-    [RANK] + p0 + p1 + q.sort().reverse() + 0 + 0
+    [RANK] + p0 + p1 + q.sort { a,b -> b <=> a } + [0,0]
   }
 }

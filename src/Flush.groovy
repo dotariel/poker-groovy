@@ -14,7 +14,7 @@ class Flush implements Rank {
     "Flush"
   }
 
-  private List<Integer> getStrength(Hand h) {
-    [RANK] + h.cards.collect { it.value }.sort().reverse()
+  private List getStrength(Hand h) {
+    [RANK] + h.cards.collect { it.value }.sort { a,b -> b <=> a } 
   }
 }

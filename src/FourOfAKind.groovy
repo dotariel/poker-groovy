@@ -14,10 +14,10 @@ class FourOfAKind implements Rank {
     "Four of a Kind"
   }
 
-  private List<Integer> getStrength(Hand h) {
-    def p = h.quads.collect { k,v -> v[0] }[0].value
-    def q = h.cards.collect { it.value } - p
+  private List getStrength(Hand hand) {
+    def p = hand.quads.collect { k,v -> v[0] }[0].value
+    def q = hand.cards.collect { it.value } - p
 
-    [RANK] + p + q.sort().reverse() + 0 + 0 + 0
+    [RANK] + p + q.sort { a,b -> b <=> a } + [0,0,0]
   }
 }
