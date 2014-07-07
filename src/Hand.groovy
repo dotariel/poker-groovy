@@ -26,11 +26,6 @@ class Hand {
     getString(this.rank)
   }
 
-  public void assignStrength(Rank rank, List strength) {
-    this.rank = rank
-    this.strength = strength
-  }
-
   public void setRank(Rank rank, Closure closure) {
     this.rank = rank
     this.strength = closure(this)
