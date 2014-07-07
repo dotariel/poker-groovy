@@ -26,6 +26,11 @@ class Hand {
     getString(this.rank)
   }
 
+  public void assignStrength(Rank rank, List strength) {
+    this.rank = rank
+    this.strength = strength
+  }
+
   private String getString(Rank rank) {
     "${cards} (${rank})" 
   }

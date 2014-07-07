@@ -4,8 +4,7 @@ class TwoPair implements Rank {
 
   boolean visit(Hand hand) {
     if (hand.pairs.size() == 2) {
-      hand.rank = this
-      hand.strength = getStrength(hand)
+      hand.assignStrength(this, getStrength(hand))
       return true
     }
   }

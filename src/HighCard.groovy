@@ -3,8 +3,7 @@ class HighCard implements Rank {
   private static int RANK = 0
 
   boolean visit(Hand hand) {
-    hand.rank = this
-    hand.strength = getStrength(hand)
+    hand.assignStrength(this, getStrength(hand))
     true
   }
 

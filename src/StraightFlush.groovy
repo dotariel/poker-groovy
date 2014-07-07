@@ -4,8 +4,7 @@ class StraightFlush implements Rank {
 
   boolean visit(Hand hand) {
     if (hand.isStraight() && hand.isFlush()) {
-      hand.rank = this
-      hand.strength = getStrength(hand)
+      hand.assignStrength(this, getStrength(hand))
       return true
     }
   }

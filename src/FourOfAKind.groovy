@@ -4,8 +4,7 @@ class FourOfAKind implements Rank {
 
   boolean visit(Hand hand) {
     if (hand.quads.size() == 1) {
-      hand.rank = this
-      hand.strength = getStrength(hand)
+      hand.assignStrength(this, getStrength(hand))
       return true
     }
   }

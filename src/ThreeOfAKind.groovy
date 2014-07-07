@@ -4,8 +4,7 @@ class ThreeOfAKind implements Rank {
 
   boolean visit(Hand hand) {
     if (hand.sets.size() == 1) {
-      hand.rank = this
-      hand.strength = getStrength(hand)
+      hand.assignStrength(this, getStrength(hand))
       return true
     }
   }

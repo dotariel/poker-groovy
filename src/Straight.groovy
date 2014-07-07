@@ -4,8 +4,7 @@ class Straight implements Rank {
 
   boolean visit(Hand hand) {
     if (hand.isStraight()) {
-      hand.rank = this
-      hand.strength = getStrength(hand)
+      hand.assignStrength(this, getStrength(hand))
       return true
     }
   }

@@ -4,8 +4,7 @@ class Flush implements Rank {
 
   boolean visit(Hand hand) {
     if (hand.isFlush()) {
-      hand.rank = this
-      hand.strength = getStrength(hand)
+      hand.assignStrength(this, getStrength(hand))
       return true
     }
   }
