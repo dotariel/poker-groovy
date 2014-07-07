@@ -18,21 +18,21 @@ class Card {
     'A': 14 
   ]
 
-  private String str
+  private String card
 
-  public Card(String str) {
-    if (!(str ==~ /[2-9KTQJA]{1}[CDSH]{1}/))
+  public Card(String card) {
+    if (!(card ==~ /[2-9KTQJA]{1}[CDSH]{1}/))
       throw new IllegalArgumentException()
     
-    this.str = str
+    this.card = card
   }
 
   public String getFace() {
-    str[0]
+    card[0]
   }
 
   public String getSuit() {
-    str[1]
+    card[1]
   }
 
   public int getValue() {
