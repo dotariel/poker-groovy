@@ -40,7 +40,9 @@ class HandTest {
 
   @Test
   public void should_determine_straight() {
+    assert new Hand(['AC','2S','3C','4H','5D']).isStraight() == true
     assert new Hand(['2S','3C','4H','5D','6S']).isStraight() == true
+    assert new Hand(['AS','KC','QH','JD','TS']).isStraight() == true
     assert new Hand(['2S','3C','4H','5D','7S']).isStraight() == false
   }
 

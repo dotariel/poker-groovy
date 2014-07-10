@@ -65,7 +65,8 @@ class Hand {
   }
 
   protected boolean isStraight() {
-    isConsecutive(cards.collect { it.value })
+    isConsecutive(cards.collect { it.value }) || 
+    isConsecutive(cards.collect { it.value == 14 ? 1 : it.value })
   }
 
   protected boolean isFlush() {
