@@ -4,7 +4,8 @@ class Hand {
   List strength = []
   Rank rank
 
-  private Hand() { }
+  private Hand() { 
+  }
 
   public Hand(List cardList) {
     if (cardList.size() != 5)

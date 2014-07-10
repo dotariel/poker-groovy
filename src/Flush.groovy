@@ -7,7 +7,6 @@ class Flush implements Rank {
       hand.setRank(this) { h ->
         [RANK] + h.cards.collect { it.value }.sort { a,b -> b <=> a } 
       }
-      
       return true
     }
   }
