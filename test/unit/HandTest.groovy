@@ -53,6 +53,13 @@ class HandTest {
   }
 
   @Test
+  public void should_determine_straight_flush() {
+    def hand = new Hand(['AS','KS','QS','JS','TS'])
+
+    assert hand.isFlush() && hand.isStraight()
+  }
+
+  @Test
   public void should_get_high_card() {
     assert new Hand(['2S','3S','9S','TS','AS']).highCard.face == 'A'
     assert new Hand(['2S','3S','9S','TS','4S']).highCard.face == 'T'

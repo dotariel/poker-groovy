@@ -5,7 +5,7 @@ class Straight implements Rank {
   boolean visit(Hand hand) {
     if (hand.isStraight()) {
       hand.setRank(this) { h ->
-        [RANK] + h.cards.collect { it.value }.sort { a,b -> b <=> a }    
+        [RANK] + h.cards.collect { it.value % 14 }.sort { a,b -> b <=> a }    
       }
       return true
     }
