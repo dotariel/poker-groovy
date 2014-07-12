@@ -14,14 +14,20 @@ class Poker {
     println "     AC 2D TH 3S 5D"
     println ""
 
-    String a = System.console().readLine 'Hand 1: '
-    String b = System.console().readLine 'Hand 2: '
+    String a = System.console().readLine 'Black: '
+    String b = System.console().readLine 'White: '
 
     try {
-      Hand h1 = new Hand(a.tokenize(' '))
-      Hand h2 = new Hand(b.tokenize(' '))
+      Map players = [
+        'Black': new Hand(a.tokenize(' ')),
+        'White': new Hand(b.tokenize(' '))
+        ]
 
-      println "Winner: " + (evaluator.choose(h1,h2) ?: "None") 
+      def result = evaluator.choose(players['Black'], players['White'])
+      def winner = players.find { k,v -> result == v }
+
+      println "${winner.key} wins - ${result}"
+      
     }
     catch (InvalidHand e) {
       println "Hands must consist of 5 cards."
