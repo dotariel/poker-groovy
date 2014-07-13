@@ -12,6 +12,7 @@ class Hand {
       throw new InvalidHand()
 
     cardList.each { s -> cards << new Card(s[0] + s[1]) }
+    sort()
   }
 
   public void sort() {
@@ -23,7 +24,6 @@ class Hand {
   }
 
   public String toString() {
-    sort()
     getString(this.rank)
   }
 
