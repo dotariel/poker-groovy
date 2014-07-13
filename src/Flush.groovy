@@ -5,7 +5,7 @@ class Flush implements Rank {
   boolean visit(Hand hand) {
     if (hand.isFlush()) {
       hand.setRank(this) { h ->
-        [RANK] + h.cards.collect { it.value }.sort { a,b -> b <=> a } 
+        [RANK] + h.cards.collect { it.value }.sort { a,b -> b <=> a }
       }
       return true
     }

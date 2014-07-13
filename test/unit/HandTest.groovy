@@ -1,5 +1,6 @@
 import org.junit.*
 
+@Mixin(RankTestMixin)
 class HandTest {
 
   @Test(expected=InvalidHand)
@@ -16,7 +17,7 @@ class HandTest {
 
   @Test
   public void should_sort_cards() {
-    def hand = Hand.mockHighCard()
+    def hand = mockHighCard()
     hand.sort()
 
     assert hand.cards.collect { it.face } == ['K', 'J', 'T', '9', '2']

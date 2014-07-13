@@ -7,7 +7,7 @@ class ThreeOfAKindTest {
 
   @Test
   public void should_set_rank_on_visit() {
-    checkVisit(Hand.mockThreeOfAKind(), ThreeOfAKind)
+    checkVisit(mockThreeOfAKind(), ThreeOfAKind)
   }
 
   @Test

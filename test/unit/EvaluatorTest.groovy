@@ -1,18 +1,19 @@
 import org.junit.*
 
+@Mixin(RankTestMixin)
 class EvaluatorTest {
 
   @Test
   public void should_assign_highest_rank_for_a_given_hand() {
-    checkRank(Hand.mockHighCard(), HighCard)
-    checkRank(Hand.mockPair(), Pair)
-    checkRank(Hand.mockTwoPair(), TwoPair)
-    checkRank(Hand.mockThreeOfAKind(), ThreeOfAKind)
-    checkRank(Hand.mockStraight(), Straight)
-    checkRank(Hand.mockFlush(), Flush)
-    checkRank(Hand.mockFullHouse(), FullHouse)
-    checkRank(Hand.mockFourOfAKind(), FourOfAKind)
-    checkRank(Hand.mockStraightFlush(), StraightFlush)
+    checkRank(mockHighCard(), HighCard)
+    checkRank(mockPair(), Pair)
+    checkRank(mockTwoPair(), TwoPair)
+    checkRank(mockThreeOfAKind(), ThreeOfAKind)
+    checkRank(mockStraight(), Straight)
+    checkRank(mockFlush(), Flush)
+    checkRank(mockFullHouse(), FullHouse)
+    checkRank(mockFourOfAKind(), FourOfAKind)
+    checkRank(mockStraightFlush(), StraightFlush)
   }
 
   @Test

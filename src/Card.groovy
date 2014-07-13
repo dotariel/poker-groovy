@@ -21,7 +21,7 @@ class Card {
   private String card
 
   public Card(String card) {
-    if (!(card ==~ /[2-9KTQJA]{1}[CDSH]{1}/))
+    if (!(card ==~ /[2-9KTQJA]{1}[CDSH]{1}/)) // AH, 2C, 9D, etc
       throw new IllegalArgumentException()
     
     this.card = card
@@ -41,6 +41,6 @@ class Card {
 
   @Override
   public String toString() {
-    "${face}${suit}"
+    card
   }
 }

@@ -7,7 +7,7 @@ class FullHouseTest {
 
   @Test
   public void should_set_rank_on_visit() {
-    checkVisit(Hand.mockFullHouse(), FullHouse)
+    checkVisit(mockFullHouse(), FullHouse)
   }
 
   @Test

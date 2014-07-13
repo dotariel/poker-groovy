@@ -7,7 +7,7 @@ class StraightTest {
 
   @Test
   public void should_set_rank_on_visit() {
-    checkVisit(Hand.mockStraight(), Straight)
+    checkVisit(mockStraight(), Straight)
   }
 
   @Test

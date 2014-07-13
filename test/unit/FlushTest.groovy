@@ -7,7 +7,7 @@ class FlushTest {
 
   @Test
   public void should_set_rank_on_visit() {
-    checkVisit(Hand.mockFlush(), Flush)
+    checkVisit(mockFlush(), Flush)
   }
 
   @Test

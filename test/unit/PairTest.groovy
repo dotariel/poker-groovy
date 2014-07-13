@@ -7,7 +7,7 @@ class PairTest {
 
   @Test
   public void should_set_rank_on_visit() {
-    checkVisit(Hand.mockPair(), Pair)
+    checkVisit(mockPair(), Pair)
   }
 
   @Test
