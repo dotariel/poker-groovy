@@ -22,10 +22,6 @@ class Hand {
     this.cards.size()
   }
 
-  public String toString() {
-    getString(this.type?.rank)
-  }
-
   public void assignRank() {
     def rank = HandType.firstMatchingRank { it.visit(this) }
     this.type = HandType.findByRank(rank)
@@ -42,6 +38,10 @@ class Hand {
     }
 
     return 0
+  }
+
+  public String toString() {
+    getString(this.type?.rank)
   }
 
   private String getString(IRank rank) {
