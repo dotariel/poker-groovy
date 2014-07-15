@@ -6,8 +6,8 @@ class ThreeOfAKindTest {
   def rank = new ThreeOfAKind()
 
   @Test
-  public void should_set_rank_on_visit() {
-    checkVisit(mockThreeOfAKind(), ThreeOfAKind)
+  public void should_return_visit_result() {
+    checkVisit(mockThreeOfAKind(), rank)
   }
 
   @Test
@@ -17,8 +17,7 @@ class ThreeOfAKindTest {
     a = new Hand(['KS', 'KH', 'KD', '3C', '8C'])
     b = new Hand(['AD', 'AH', 'AC', '9S', '8D'])
 
-    rank.visit(a)
-    rank.visit(b)
+    [a,b].each { it.assignRank() }
 
     assert [3,13,8,3,0,0] == a.strength
     assert [3,14,9,8,0,0] == b.strength

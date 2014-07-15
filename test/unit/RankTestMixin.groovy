@@ -36,8 +36,7 @@ class RankTestMixin {
     new Hand(['4H', '5H', '6H', '7H', '8H'])
   }
 
-  void checkVisit(hand, rank) {
-    rank.newInstance().visit(hand)
-    assert hand.rank?.class == rank
+  void checkVisit(hand, rank, expected=true) {
+    assert rank.visit(hand) == expected
   }
 }

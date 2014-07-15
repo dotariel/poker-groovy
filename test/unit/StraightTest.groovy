@@ -6,8 +6,8 @@ class StraightTest {
   def rank = new Straight()
 
   @Test
-  public void should_set_rank_on_visit() {
-    checkVisit(mockStraight(), Straight)
+  public void should_return_visit_result() {
+    checkVisit(mockStraight(), rank)
   }
 
   @Test
@@ -19,7 +19,7 @@ class StraightTest {
     c = new Hand(['AD', '2C', '3S', '4D', '5C'])
     d = new Hand(['2D', '3C', '4S', '5D', '6C'])
 
-    [a,b,c,d].each { rank.visit(it) }
+    [a,b,c,d].each { it.assignRank() }
 
     assert [4,8,7,6,5,4] == a.strength
     assert [4,9,8,7,6,5] == b.strength

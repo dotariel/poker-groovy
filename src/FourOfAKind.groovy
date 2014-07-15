@@ -1,17 +1,14 @@
-class FourOfAKind implements Rank {
-
-  private static int RANK = 7
+class FourOfAKind implements IRank {
 
   boolean visit(Hand hand) {
-    if (hand.quads.size() == 1) {
-      hand.setRank(this) { h ->
-        def p = h.quads.collect { k,v -> v[0] }[0].value
-        def q = h.cards.collect { it.value } - p
+    hand.quads.size() == 1
+  }
 
-        [RANK] + p + q.sort { a,b -> b <=> a } + [0,0,0]
-      }
-      return true
-    }
+  List getStrength(Hand hand) {
+    def p = hand.quads.collect { k,v -> v[0] }[0].value
+    def q = hand.cards.collect { it.value } - p
+
+    [p] + q.sort { a,b -> b <=> a } + [0,0,0]
   }
 
   String toString() {

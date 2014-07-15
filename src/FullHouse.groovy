@@ -1,17 +1,14 @@
-class FullHouse implements Rank {
-
-  private static int RANK = 6
+class FullHouse implements IRank {
 
   boolean visit(Hand hand) {
-    if (hand.sets.size() == 1 && hand.pairs.size() == 1) {
-      hand.setRank(this) { h ->
-        def p = hand.sets.collect { k,v -> v[0] }[0].value
-        def q = hand.pairs.collect { k,v -> v[0] }[0].value
+    hand.sets.size() == 1 && hand.pairs.size() == 1
+  }
 
-        [RANK] + p + q + [0,0,0]
-      }
-      return true
-    }
+  List getStrength(Hand hand) {
+    def p = hand.sets.collect { k,v -> v[0] }[0].value
+    def q = hand.pairs.collect { k,v -> v[0] }[0].value
+
+    [p, q, 0,0,0]
   }
 
   String toString() {

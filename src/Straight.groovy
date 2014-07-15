@@ -1,14 +1,11 @@
-class Straight implements Rank {
-
-  private static int RANK = 4
+class Straight implements IRank {
 
   boolean visit(Hand hand) {
-    if (hand.isStraight()) {
-      hand.setRank(this) { h ->
-        [RANK] + h.cards.collect { it.value % 14 }.sort { a,b -> b <=> a }    
-      }
-      return true
-    }
+    hand.isStraight()
+  }
+
+  List getStrength(Hand hand) {
+    hand.cards.collect { it.value % 14 }.sort { a,b -> b <=> a }        
   }
 
   String toString() {

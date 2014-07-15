@@ -1,14 +1,11 @@
-class StraightFlush implements Rank {
-
-  private static int RANK = 8
+class StraightFlush implements IRank {
 
   boolean visit(Hand hand) {
-    if (hand.isStraight() && hand.isFlush()) {
-      hand.setRank(this) { h ->
-        [RANK] + h.cards.collect { it.value }.sort { a,b -> b <=> a }
-      }
-      return true
-    }
+    hand.isStraight() && hand.isFlush()
+  }
+
+  List getStrength(Hand hand) {
+    hand.cards.collect { it.value }.sort { a,b -> b <=> a }
   }
 
   String toString() {

@@ -1,8 +1,7 @@
 class Hand {
 
   List cards = []
-  List strength = []
-  Rank rank
+  HandType type
 
   private Hand() { 
   }
@@ -24,15 +23,28 @@ class Hand {
   }
 
   public String toString() {
-    getString(this.rank)
+    getString(this.type?.rank)
   }
 
-  public void setRank(Rank rank, Closure closure) {
-    this.rank = rank
-    this.strength = closure(this)
+  public void assignRank() {
+    def rank = HandType.firstMatchingRank { it.visit(this) }
+    this.type = HandType.findByRank(rank)
   }
 
-  private String getString(Rank rank) {
+  public List getStrength() {
+    [type?.value] + type?.rank?.getStrength(this)
+  }
+
+  public int compareTo(Hand hand) {
+    for (int i=0; i<this.strength.size(); i++) {
+      if (this.strength[i] > hand.strength[i]) return 1
+      if (this.strength[i] < hand.strength[i]) return -1
+    }
+
+    return 0
+  }
+
+  private String getString(IRank rank) {
     "${cards} (${rank})" 
   }
 

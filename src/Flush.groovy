@@ -1,14 +1,11 @@
-class Flush implements Rank {
-
-  private static int RANK = 5
+class Flush implements IRank {
 
   boolean visit(Hand hand) {
-    if (hand.isFlush()) {
-      hand.setRank(this) { h ->
-        [RANK] + h.cards.collect { it.value }.sort { a,b -> b <=> a }
-      }
-      return true
-    }
+    hand.isFlush()
+  }
+
+  List getStrength(Hand hand) {
+    hand.cards.collect { it.value }.sort { a,b -> b <=> a }    
   }
 
   public String toString() {

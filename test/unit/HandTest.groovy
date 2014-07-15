@@ -61,10 +61,51 @@ class HandTest {
   }
 
   @Test
+  public void should_assign_rank() {
+    checkRankAssignment(mockHighCard(), HighCard)
+    checkRankAssignment(mockPair(), Pair)
+    checkRankAssignment(mockTwoPair(), TwoPair)
+    checkRankAssignment(mockThreeOfAKind(), ThreeOfAKind)
+    checkRankAssignment(mockStraight(), Straight)
+    checkRankAssignment(mockFlush(), Flush)
+    checkRankAssignment(mockFourOfAKind(), FourOfAKind)
+    checkRankAssignment(mockStraightFlush(), StraightFlush)
+  }
+
+  private checkRankAssignment(Hand hand, Class rank) {
+    hand.assignRank()
+    assert hand.type.rank.class == rank
+  }
+
+  @Test
   public void should_get_high_card() {
     assert new Hand(['2S','3S','9S','TS','AS']).highCard.face == 'A'
     assert new Hand(['2S','3S','9S','TS','4S']).highCard.face == 'T'
   }
+
+  @Test
+  public void should_compare_to_hand() {
+    checkComparison([0,0,0,0,0,0], [0,0,0,0,0,0], 0)
+    checkComparison([1,0,0,0,0,0], [0,0,0,0,0,0], 1)
+    checkComparison([0,0,0,0,0,0], [1,0,0,0,0,0], -1)
+    checkComparison([1,1,0,0,0,0], [1,0,0,0,0,0], 1)
+    checkComparison([1,1,1,0,0,0], [1,1,0,0,0,0], 1)
+    checkComparison([1,1,1,1,0,0], [1,1,0,0,0,0], 1)
+    checkComparison([1,1,1,1,1,0], [1,1,0,0,0,0], 1)
+    checkComparison([1,1,1,1,1,1], [1,1,0,0,0,0], 1)
+    checkComparison([1,5,0,0,0,0], [1,4,0,0,0,0], 1)
+  }
+
+  private void checkComparison(List mockStrength1, List mockStrength2, int expected) {
+    def a = new Hand()
+    a.metaClass.getStrength = { -> mockStrength1 }
+      
+    def b = new Hand()
+    b.metaClass.getStrength = { -> mockStrength2 }
+    
+    assert a.compareTo(b) == expected
+  }
+  
 
   @Test
   public void should_get_string() {
@@ -77,8 +118,8 @@ class HandTest {
     checkString(hand, new Pair(), 'AH AC KC TD 2S (Pair: A)')
   }
 
-  private def checkString(Hand h, Rank r, String expected) {
-    h.rank = r
+  private def checkString(Hand h, IRank r, String expected) {
+    h.assignRank()
     assert h.toString() == expected
   }
 

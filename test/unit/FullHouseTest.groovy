@@ -6,8 +6,8 @@ class FullHouseTest {
   def rank = new FullHouse()
 
   @Test
-  public void should_set_rank_on_visit() {
-    checkVisit(mockFullHouse(), FullHouse)
+  public void should_return_visit_result() {
+    checkVisit(mockFullHouse(), rank)
   }
 
   @Test
@@ -17,8 +17,7 @@ class FullHouseTest {
     a = new Hand(['KS', 'KH', 'KD', '3C', '3H'])
     b = new Hand(['AD', 'AH', 'AC', '9S', '9H'])
 
-    rank.visit(a)
-    rank.visit(b)
+    [a,b].each { it.assignRank() }
 
     assert [6,13,3,0,0,0] == a.strength
     assert [6,14,9,0,0,0] == b.strength
