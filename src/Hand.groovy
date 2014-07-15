@@ -24,7 +24,7 @@ class Hand {
   }
 
   public void assignType() {
-    def rank = HandType.firstMatchingRank { it.visit(this) }
+    IRank rank = HandType.firstMatchingRank { it.visit(this) }
     this.type = HandType.findByRank(rank)
   }
 
