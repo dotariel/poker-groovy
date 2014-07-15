@@ -17,8 +17,6 @@ class HighCardTest {
     a = new Hand(['AD', 'KH', '3C', '9S', '8D'])
     b = new Hand(['AS', 'TH', '2S', '3C', '8C'])
 
-    [a,b].each { it.assignRank() }
-
     assert [0, 14, 13, 9, 8, 3] == a.strength
     assert [0, 14, 10, 8, 3, 2] == b.strength
   }

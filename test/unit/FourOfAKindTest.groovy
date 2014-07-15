@@ -17,8 +17,6 @@ class FourOfAKindTest {
     a = new Hand(['KS', 'KH', 'KD', 'KC', '8C'])
     b = new Hand(['AD', 'AH', 'AC', 'AS', '8D'])
 
-    [a,b].each { it.assignRank() }
-
     assert [7,13,8,0,0,0] == a.strength
     assert [7,14,8,0,0,0] == b.strength
   }

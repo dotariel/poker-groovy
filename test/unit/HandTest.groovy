@@ -61,7 +61,7 @@ class HandTest {
   }
 
   @Test
-  public void should_assign_rank() {
+  public void should_assign_type() {
     checkRankAssignment(mockHighCard(), HighCard)
     checkRankAssignment(mockPair(), Pair)
     checkRankAssignment(mockTwoPair(), TwoPair)
@@ -73,7 +73,7 @@ class HandTest {
   }
 
   private checkRankAssignment(Hand hand, Class rank) {
-    hand.assignRank()
+    hand.assignType()
     assert hand.type.rank.class == rank
   }
 
@@ -105,7 +105,6 @@ class HandTest {
     
     assert a.compareTo(b) == expected
   }
-  
 
   @Test
   public void should_get_string() {
@@ -119,7 +118,7 @@ class HandTest {
   }
 
   private def checkString(Hand h, IRank r, String expected) {
-    h.assignRank()
+    h.assignType()
     assert h.toString() == expected
   }
 

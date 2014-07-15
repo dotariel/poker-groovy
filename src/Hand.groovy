@@ -11,6 +11,7 @@ class Hand {
       throw new InvalidHand()
 
     cardList.each { s -> cards << new Card(s[0] + s[1]) }
+    assignType()
     sort()
   }
 
@@ -22,7 +23,7 @@ class Hand {
     this.cards.size()
   }
 
-  public void assignRank() {
+  public void assignType() {
     def rank = HandType.firstMatchingRank { it.visit(this) }
     this.type = HandType.findByRank(rank)
   }
