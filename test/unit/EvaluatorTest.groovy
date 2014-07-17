@@ -10,9 +10,4 @@ class EvaluatorTest {
 
     assert new Evaluator().choose(a,b) == a
   }
-
-  private void checkRank(hand, rank) {
-    new Evaluator().assignRank(hand)
-    assert hand.type.rank.class == rank
-  }
 }

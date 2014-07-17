@@ -26,7 +26,6 @@ class Poker {
       def result = evaluator.choose(players['Black'], players['White'])
       def winner = players.find { k,v -> result == v }
 
-      println winner.value.strength
       println "${winner.key} wins - ${result}"
     }
     catch (InvalidHand e) {
