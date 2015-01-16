@@ -1,0 +1,1 @@
+class InvalidHand extends Exception { }
