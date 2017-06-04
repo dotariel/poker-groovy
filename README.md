@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dotariel/poker-groovy.svg?branch=master)](https://travis-ci.org/dotariel/poker-groovy)
+
 # Basics
 A poker deck contains 52 cards - each card has a suit which is one of clubs, diamonds, hearts, or spades (denoted C, D, H, and S in the input data).
 
